@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: normal;
+
+  box-sizing: border-box;
+  min-height: 4.75rem;
+  margin: 0;
+  padding: var(--gap-2) var(--gap-3);
+
+  resize: vertical;
+
+  border: 1px solid var(--control-border-color);
+  border-radius: var(--control-border-radius);
+
+  flex-grow: 1;
+}
+
+.input::placeholder {
+  color: var(--placeholder-text-color);
+}

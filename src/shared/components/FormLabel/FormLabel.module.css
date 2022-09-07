@@ -1,0 +1,10 @@
+.label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: var(--gap-1);
+
+  white-space: normal;
+  overflow-wrap: break-word;
+
+  color: var(--main-text-color);
+}
