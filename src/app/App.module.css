@@ -1,0 +1,7 @@
+.app {
+  --main-text-color: #374151;
+}
+
+.app {
+  color: var(--main-text-color);
+}
