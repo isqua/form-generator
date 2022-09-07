@@ -9,6 +9,11 @@
 
   --control-border-color: #e5e7eb;
   --control-border-radius: 0.375rem;
+
+  --action-background-color: #0ea5e9;
+  --action-background-color-hover: #0284c7;
+  --action-text-color: #fff;
+  --action-text-color-disabled: rgba(255,255,255,0.75);
 }
 
 .app {

@@ -1,0 +1,40 @@
+.control {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
+
+  display: inline-block;
+  box-sizing: border-box;
+  padding: var(--gap-2) var(--gap-3);
+  border: none;
+  border-radius: var(--control-border-radius);
+
+  background-color: transparent;
+
+  color: var(--secondary-text-color);
+  cursor: pointer;
+}
+
+.control:disabled {
+  cursor: not-allowed;
+}
+
+.control:not(:disabled):hover,
+.control:not(:disabled):focus {
+  color: var(--main-text-color);
+}
+
+.control[type=submit] {
+  color: var(--action-text-color);
+  background-color: var(--action-background-color);
+}
+
+.control[type=submit]:disabled {
+  color: var(--action-text-color-disabled);
+}
+
+.control[type=submit]:not(:disabled):hover,
+.control[type=submit]:not(:disabled):focus {
+  color: var(--action-text-color);
+  background-color: var(--action-background-color-hover);
+}
