@@ -1,0 +1,40 @@
+.container {
+  max-width: 100%;
+}
+
+.main {
+  border-width: 0 0 1px;
+  border-style: solid;
+  border-color: var(--control-border-color);
+  background-color: var(--panel-background-color);
+}
+
+.main,
+.secondary {
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: var(--gap-6);
+}
+
+@media screen and (min-width: 800px) {
+  .container {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .main {
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    border-width: 0 1px 0 0;
+  }
+
+  .main,
+  .secondary {
+    flex: 0 0 50%;
+  }
+}
