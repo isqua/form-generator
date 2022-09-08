@@ -1,0 +1,32 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: var(--header-2-font-size);
+  font-weight: bold;
+  line-height: inherit;
+  line-height: var(--header-2-line-height);
+  margin: 0 0 var(--gap-4);
+  overflow-wrap: break-word;
+  color: inherit;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-4);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-3);
+  row-gap: var(--gap-3);
+  justify-content: flex-end;
+}
+
+.fields + .actions {
+  margin-top: var(--gap-6);
+}
