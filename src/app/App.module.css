@@ -20,11 +20,13 @@
   --action-text-color: #fff;
   --action-text-color-disabled: rgba(255,255,255,0.75);
 
+  --text-line-height: 1.25rem;
+
   --header-2-font-size: 1.25rem;
   --header-2-line-height: 1.5rem;
 }
 
 .app {
   color: var(--main-text-color);
-  line-height: 1.25rem;
+  line-height: var(--text-line-height);
 }

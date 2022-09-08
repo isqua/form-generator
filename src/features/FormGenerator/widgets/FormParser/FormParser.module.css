@@ -1,0 +1,12 @@
+.container {
+  flex-grow: 1;
+}
+
+.fields,
+.textarea {
+  flex-grow: 1;
+}
+
+.error {
+  min-height: var(--text-line-height);
+}
