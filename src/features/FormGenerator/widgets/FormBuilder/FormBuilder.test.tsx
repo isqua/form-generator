@@ -115,6 +115,34 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
       });
     });
 
+    describe('number field', () => {
+      it('should render text number without label', () => {
+        const schema: IForm = {
+          items: [
+            { type: InputType.numberfield },
+          ],
+          actions: [],
+        };
+
+        render(<FormBuilder schema={schema} />);
+
+        expect(screen.getByRole('spinbutton', { name: '' })).toBeInTheDocument();
+      });
+
+      it('should render number field with label', () => {
+        const schema: IForm = {
+          items: [
+            { type: InputType.numberfield, label: 'Salary' },
+          ],
+          actions: [],
+        };
+
+        render(<FormBuilder schema={schema} />);
+
+        expect(screen.getByRole('spinbutton', { name: 'Salary' })).toBeInTheDocument();
+      });
+    });
+
     describe('checkbox', () => {
       it('should render checkbox with label', () => {
         const schema: IForm = {

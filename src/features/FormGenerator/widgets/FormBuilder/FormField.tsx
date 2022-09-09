@@ -15,6 +15,13 @@ export function FormField({ schema }: IFormFieldProps): React.ReactElement {
           label={schema.label}
         />
       );
+    case InputType.numberfield:
+      return (
+        <TextInput
+          label={schema.label}
+          type="number"
+        />
+      );
     case InputType.textarea:
       return (
         <TextArea

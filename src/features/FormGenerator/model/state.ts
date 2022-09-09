@@ -5,6 +5,7 @@ export const defaultSchema: IForm = {
   title: 'Register',
   items: [
     { type: InputType.textfield, label: 'Full Name' },
+    { type: InputType.numberfield, label: 'Annual Compensation' },
     { type: InputType.textarea, label: 'Bio' },
     { type: InputType.checkbox, label: 'I agree to defined terms and policies' },
   ],
