@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: normal;
+
+  box-sizing: border-box;
+  margin: 0;
+  padding: var(--gap-2) var(--gap-3);
+
+  border: 1px solid var(--control-border-color);
+  border-radius: var(--control-border-radius);
+}
+
+.input::placeholder {
+  color: var(--placeholder-text-color);
+}
