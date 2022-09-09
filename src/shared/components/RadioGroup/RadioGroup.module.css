@@ -1,0 +1,28 @@
+.header + .options {
+  margin-top: var(--gap-3);
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-3);
+}
+
+.option {
+  display: flex;
+  align-items: flex-start;
+}
+
+.control {
+  flex-shrink: 0;
+}
+
+.input {
+  width: 1rem;
+  height: 1rem;
+}
+
+.text {
+  margin-left: var(--gap-3);
+  font-size: var(--small-font-size);
+}
