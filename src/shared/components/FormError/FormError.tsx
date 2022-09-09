@@ -5,6 +5,6 @@ import { IFormErrorProps } from './FormError.types';
 
 import styles from './FormError.module.css';
 
-export function FormError({ children, className }: IFormErrorProps): React.ReactElement {
-  return (<p className={clx(styles.error, className)}>{children}</p>);
+export function FormError({ children, className, testId }: IFormErrorProps): React.ReactElement {
+  return (<p data-testid={testId} className={clx(styles.error, className)}>{children}</p>);
 }

@@ -40,7 +40,7 @@ export function FormParser(props: IFormParserProps): React.ReactElement {
         rows={15}
         onChange={handleChange}
       />
-      <FormError className={styles.error}>{error}</FormError>
+      <FormError testId="FormParserError" className={styles.error}>{error}</FormError>
     </Form>
   );
 }

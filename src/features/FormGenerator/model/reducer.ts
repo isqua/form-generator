@@ -6,7 +6,15 @@ export function reducer(
   action: IFormGeneratorAction,
 ): IFormGeneratorState {
   if (action.type === FormGeneratorAction.update) {
-    const { text } = action.payload;
+    const text = action.payload.text.trim();
+
+    if (text.trim().length === 0) {
+      return {
+        schema: state.schema,
+        text,
+        error: '',
+      };
+    }
 
     try {
       const schema = JSON.parse(text);

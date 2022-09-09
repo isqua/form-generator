@@ -71,4 +71,17 @@ describe('features/FormGenerator', () => {
     expect(screen.getByRole('textbox', { name: 'Hey' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Greet' })).toBeInTheDocument();
   });
+
+  it('should not rerender the form and not render any errors on empty input', () => {
+    const value = '  ';
+
+    render(<FormGenerator />);
+    fireEvent.change(
+      screen.getByLabelText(formJsonInputLabel),
+      { target: { value } },
+    );
+
+    expectDefaultFormToBePresented(screen);
+    expect(screen.getByTestId('FormParserError')).toBeEmptyDOMElement();
+  });
 });
