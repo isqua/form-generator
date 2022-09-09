@@ -15,6 +15,13 @@ export function FormField({ schema }: IFormFieldProps): React.ReactElement {
           label={schema.label}
         />
       );
+    case InputType.datefield:
+      return (
+        <TextInput
+          label={schema.label}
+          type="date"
+        />
+      );
     case InputType.numberfield:
       return (
         <TextInput

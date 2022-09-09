@@ -11,6 +11,7 @@ export interface FormAction {
 
 export enum InputType {
   checkbox = 'checkbox',
+  datefield = 'datefield',
   numberfield = 'numberfield',
   textarea = 'textarea',
   textfield = 'textfield',
@@ -24,6 +25,10 @@ export interface IAbstractFormInput {
 export interface ICheckBoxInput extends IAbstractFormInput {
   type: InputType.checkbox;
   label: string;
+}
+
+export interface IDateFieldInput extends IAbstractFormInput {
+  type: InputType.datefield;
 }
 
 export interface INumberFieldInput extends IAbstractFormInput {
@@ -40,6 +45,7 @@ export interface ITextFieldInput extends IAbstractFormInput {
 
 export type IFormInput =
   ICheckBoxInput |
+  IDateFieldInput |
   INumberFieldInput |
   ITextAreaInput |
   ITextFieldInput;

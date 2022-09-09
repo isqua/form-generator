@@ -211,5 +211,23 @@ describe('features/FormGenerator/schema/validate', () => {
         expect(actual.errors).toHaveLength(0);
       });
     });
+
+    describe('datefield', () => {
+      it('should allow empty label of a date field', async () => {
+        const config = {
+          items: [
+            { type: InputType.datefield },
+          ],
+          actions: [
+            { type: ActionType.submit, text: 'Preview' },
+          ],
+        };
+
+        const actual = validate(config);
+
+        expect(actual.data).toEqual(config);
+        expect(actual.errors).toHaveLength(0);
+      });
+    });
   });
 });

@@ -143,6 +143,34 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
       });
     });
 
+    describe('date field', () => {
+      it('should render text date without label', () => {
+        const schema: IForm = {
+          items: [
+            { type: InputType.datefield },
+          ],
+          actions: [],
+        };
+
+        const { container } = render(<FormBuilder schema={schema} />);
+
+        expect(container.querySelector('input[type=date]')).toBeInTheDocument();
+      });
+
+      it('should render date field with label', () => {
+        const schema: IForm = {
+          items: [
+            { type: InputType.datefield, label: 'Onboarding Date' },
+          ],
+          actions: [],
+        };
+
+        render(<FormBuilder schema={schema} />);
+
+        expect(screen.getByLabelText('Onboarding Date')).toBeInTheDocument();
+      });
+    });
+
     describe('checkbox', () => {
       it('should render checkbox with label', () => {
         const schema: IForm = {

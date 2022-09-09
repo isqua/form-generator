@@ -2,6 +2,7 @@ import { JSONSchemaType } from 'ajv';
 import {
   InputType,
   IFormInput,
+  IDateFieldInput,
   ICheckBoxInput,
   INumberFieldInput,
   ITextAreaInput,
@@ -15,6 +16,16 @@ const checkBoxInputSchema: JSONSchemaType<ICheckBoxInput> = {
     label: { type: 'string' },
   },
   required: ['type', 'label'],
+  additionalProperties: false,
+};
+
+const dateFieldInputSchema: JSONSchemaType<IDateFieldInput> = {
+  type: 'object',
+  properties: {
+    type: { type: 'string', const: InputType.datefield },
+    label: { type: 'string', nullable: true },
+  },
+  required: ['type'],
   additionalProperties: false,
 };
 
@@ -52,6 +63,7 @@ export const formInputSchema: JSONSchemaType<IFormInput> = {
   type: 'object',
   oneOf: [
     checkBoxInputSchema,
+    dateFieldInputSchema,
     numberFieldInputSchema,
     textAreaInputSchema,
     textFieldInputSchema,
