@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { FormBuilder } from './FormBuilder';
 import { ActionType, InputType, IForm } from '../../../../shared/types/form';
 
@@ -183,6 +183,36 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
         render(<FormBuilder schema={schema} />);
 
         expect(screen.getByRole('checkbox', { name: 'Subscribe' })).toBeInTheDocument();
+      });
+    });
+
+    describe('radio group', () => {
+      it('should render a working radio group', () => {
+        const schema: IForm = {
+          items: [
+            {
+              type: InputType.radiogroup,
+              label: 'Radio',
+              options: [
+                { value: 'foo', caption: 'Foo' },
+                { value: 'bar', caption: 'Bar' },
+              ],
+            },
+          ],
+          actions: [],
+        };
+
+        render(<FormBuilder schema={schema} />);
+
+        expect(screen.getByRole('radio', { name: 'Foo' })).toBeInTheDocument();
+        expect(screen.getByRole('radio', { name: 'Bar' })).toBeInTheDocument();
+
+        fireEvent.click(screen.getByText('Foo'));
+        expect(screen.getByRole('radio', { name: 'Foo' })).toBeChecked();
+
+        fireEvent.click(screen.getByText('Bar'));
+        expect(screen.getByRole('radio', { name: 'Bar' })).toBeChecked();
+        expect(screen.getByRole('radio', { name: 'Foo' })).not.toBeChecked();
       });
     });
   });

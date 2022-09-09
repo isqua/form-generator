@@ -6,6 +6,15 @@ export const defaultSchema: IForm = {
   items: [
     { type: InputType.textfield, label: 'Full Name' },
     { type: InputType.numberfield, label: 'Annual Compensation' },
+    {
+      type: InputType.radiogroup,
+      label: 'Preferred Laptop',
+      options: [
+        { value: 'mac', caption: 'MacBook Pro 13”' },
+        { value: 'windows', caption: 'Dell XPS 13” with Windows' },
+        { value: 'linux', caption: 'Dell XPS 13” with Ubuntu' },
+      ],
+    },
     { type: InputType.datefield, label: 'Onboarding Date' },
     { type: InputType.textarea, label: 'Bio' },
     { type: InputType.checkbox, label: 'I agree to defined terms and policies' },

@@ -13,8 +13,14 @@ export enum InputType {
   checkbox = 'checkbox',
   datefield = 'datefield',
   numberfield = 'numberfield',
+  radiogroup = 'radiogroup',
   textarea = 'textarea',
   textfield = 'textfield',
+}
+
+export interface IInputOption {
+  value: string;
+  caption: string;
 }
 
 export interface IAbstractFormInput {
@@ -35,6 +41,11 @@ export interface INumberFieldInput extends IAbstractFormInput {
   type: InputType.numberfield;
 }
 
+export interface IRadioGroupInput extends IAbstractFormInput {
+  type: InputType.radiogroup;
+  options: IInputOption[];
+}
+
 export interface ITextAreaInput extends IAbstractFormInput {
   type: InputType.textarea;
 }
@@ -47,6 +58,7 @@ export type IFormInput =
   ICheckBoxInput |
   IDateFieldInput |
   INumberFieldInput |
+  IRadioGroupInput |
   ITextAreaInput |
   ITextFieldInput;
 

@@ -2,12 +2,24 @@ import { JSONSchemaType } from 'ajv';
 import {
   InputType,
   IFormInput,
+  IInputOption,
   IDateFieldInput,
   ICheckBoxInput,
   INumberFieldInput,
+  IRadioGroupInput,
   ITextAreaInput,
   ITextFieldInput,
 } from '../../../shared/types/form';
+
+const inputOptionSchema: JSONSchemaType<IInputOption> = {
+  type: 'object',
+  properties: {
+    value: { type: 'string' },
+    caption: { type: 'string' },
+  },
+  required: ['value', 'caption'],
+  additionalProperties: false,
+};
 
 const checkBoxInputSchema: JSONSchemaType<ICheckBoxInput> = {
   type: 'object',
@@ -39,6 +51,17 @@ const numberFieldInputSchema: JSONSchemaType<INumberFieldInput> = {
   additionalProperties: false,
 };
 
+const radioGroupInputSchema: JSONSchemaType<IRadioGroupInput> = {
+  type: 'object',
+  properties: {
+    type: { type: 'string', const: InputType.radiogroup },
+    label: { type: 'string', nullable: true },
+    options: { type: 'array', items: inputOptionSchema, minItems: 2 },
+  },
+  required: ['type', 'options'],
+  additionalProperties: false,
+};
+
 const textAreaInputSchema: JSONSchemaType<ITextAreaInput> = {
   type: 'object',
   properties: {
@@ -65,6 +88,7 @@ export const formInputSchema: JSONSchemaType<IFormInput> = {
     checkBoxInputSchema,
     dateFieldInputSchema,
     numberFieldInputSchema,
+    radioGroupInputSchema,
     textAreaInputSchema,
     textFieldInputSchema,
   ],

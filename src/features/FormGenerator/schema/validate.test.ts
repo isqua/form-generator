@@ -194,6 +194,135 @@ describe('features/FormGenerator/schema/validate', () => {
       });
     });
 
+    describe('radiogroup', () => {
+      it('should parse valid radiogroup', async () => {
+        const config = {
+          items: [
+            {
+              type: InputType.radiogroup,
+              label: 'Radio',
+              options: [
+                { value: 'foo', caption: 'Foo' },
+                { value: 'bar', caption: 'Bar' },
+              ],
+            },
+          ],
+          actions: [
+            { type: ActionType.submit, text: 'Preview' },
+          ],
+        };
+
+        const actual = validate(config);
+
+        expect(actual.data).toEqual(config);
+        expect(actual.errors).toHaveLength(0);
+      });
+
+      it('should not require a label of a radiogroup', async () => {
+        const config = {
+          items: [
+            {
+              type: InputType.radiogroup,
+              options: [
+                { value: 'foo', caption: 'Foo' },
+                { value: 'bar', caption: 'Bar' },
+              ],
+            },
+          ],
+          actions: [
+            { type: ActionType.submit, text: 'Preview' },
+          ],
+        };
+
+        const actual = validate(config);
+
+        expect(actual.data).toEqual(config);
+        expect(actual.errors).toHaveLength(0);
+      });
+
+      it('should require options of radiogroup', async () => {
+        const config = {
+          items: [
+            { type: InputType.radiogroup, label: 'Radio' },
+          ],
+          actions: [
+            { type: ActionType.submit, text: 'Preview' },
+          ],
+        };
+
+        const actual = validate(config);
+
+        expect(actual.data).toBeNull();
+        expect(actual.errors).toContain("Form/items/0 must have required property 'options'");
+      });
+
+      it('should require at least two options of radiogroup', async () => {
+        const config = {
+          items: [
+            {
+              type: InputType.radiogroup,
+              label: 'Radio',
+              options: [
+                { value: 'foo', caption: 'Foo' },
+              ],
+            },
+          ],
+          actions: [
+            { type: ActionType.submit, text: 'Preview' },
+          ],
+        };
+
+        const actual = validate(config);
+
+        expect(actual.data).toBeNull();
+        expect(actual.errors).toContain('Form/items/0/options must NOT have fewer than 2 items');
+      });
+
+      it('should require a value in radiogroup option', async () => {
+        const config = {
+          items: [
+            {
+              type: InputType.radiogroup,
+              options: [
+                { value: 'foo', caption: 'Foo' },
+                { caption: 'Bar' },
+              ],
+            },
+          ],
+          actions: [
+            { type: ActionType.submit, text: 'Preview' },
+          ],
+        };
+
+        const actual = validate(config);
+
+        expect(actual.data).toBeNull();
+        expect(actual.errors).toContain("Form/items/0/options/1 must have required property 'value'");
+      });
+
+      it('should require a caption in radiogroup option', async () => {
+        const config = {
+          items: [
+            {
+              type: InputType.radiogroup,
+              options: [
+                { value: 'foo', caption: 'Foo' },
+                { value: 'bar' },
+              ],
+            },
+          ],
+          actions: [
+            { type: ActionType.submit, text: 'Preview' },
+          ],
+        };
+
+        const actual = validate(config);
+
+        expect(actual.data).toBeNull();
+        expect(actual.errors).toContain("Form/items/0/options/1 must have required property 'caption'");
+      });
+    });
+
     describe('numberfield', () => {
       it('should allow empty label of a number field', async () => {
         const config = {
