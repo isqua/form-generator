@@ -1,5 +1,11 @@
 import { ErrorObject } from 'ajv';
 
+const needlessErrorTypes = [
+  // Hide messages like “Form/items/5 must match exactly one schema in oneOf”
+  // Showing unmatched properties for /items/5 is enough
+  'oneOf',
+];
+
 const formatPath = (instancePath: string): string => `Form${instancePath}`;
 
 const formatError = (error: ErrorObject): string => {
@@ -13,7 +19,9 @@ export const formatErrors = (errors?: ErrorObject[] | null): string[] => {
     return [];
   }
 
-  const formattedErrors = errors.map(formatError);
+  const formattedErrors = errors
+    .filter((error) => !needlessErrorTypes.includes(error.keyword))
+    .map(formatError);
 
   return Array.from(new Set(formattedErrors));
 };

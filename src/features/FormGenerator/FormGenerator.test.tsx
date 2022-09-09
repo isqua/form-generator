@@ -7,8 +7,8 @@ import { ActionType, InputType } from '../../shared/types/form';
 
 const expectDefaultFormToBePresented = (screen: Screen) => {
   expect(screen.getByRole('heading', { name: 'Register' })).toBeInTheDocument();
+  expect(screen.getByRole('textbox', { name: 'Full Name' })).toBeInTheDocument();
   expect(screen.getByRole('textbox', { name: 'Bio' })).toBeInTheDocument();
-  expect(screen.getByRole('textbox', { name: 'Contacts' })).toBeInTheDocument();
   expect(screen.getByRole('button', { name: 'Sign up' })).toBeInTheDocument();
 };
 

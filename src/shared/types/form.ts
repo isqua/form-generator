@@ -11,6 +11,7 @@ export interface FormAction {
 
 export enum InputType {
   textarea = 'textarea',
+  textfield = 'textfield',
 }
 
 export interface IAbstractFormInput {
@@ -22,7 +23,11 @@ export interface ITextAreaInput extends IAbstractFormInput {
   type: InputType.textarea;
 }
 
-export type IFormInput = ITextAreaInput;
+export interface ITextFieldInput extends IAbstractFormInput {
+  type: InputType.textfield;
+}
+
+export type IFormInput = ITextAreaInput | ITextFieldInput;
 
 export interface IForm {
   title?: string;

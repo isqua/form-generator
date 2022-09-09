@@ -4,8 +4,8 @@ import { IFormGeneratorState } from './types';
 export const defaultSchema: IForm = {
   title: 'Register',
   items: [
+    { type: InputType.textfield, label: 'Full Name' },
     { type: InputType.textarea, label: 'Bio' },
-    { type: InputType.textarea, label: 'Contacts' },
   ],
   actions: [
     { type: ActionType.submit, text: 'Sign up' },

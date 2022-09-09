@@ -86,5 +86,33 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
         expect(screen.getByRole('textbox', { name: 'Description' })).toBeInTheDocument();
       });
     });
+
+    describe('text field', () => {
+      it('should render text field without label', () => {
+        const schema: IForm = {
+          items: [
+            { type: InputType.textfield, label: '' },
+          ],
+          actions: [],
+        };
+
+        render(<FormBuilder schema={schema} />);
+
+        expect(screen.getByRole('textbox', { name: '' })).toBeInTheDocument();
+      });
+
+      it('should render text field with label', () => {
+        const schema: IForm = {
+          items: [
+            { type: InputType.textfield, label: 'Full Name' },
+          ],
+          actions: [],
+        };
+
+        render(<FormBuilder schema={schema} />);
+
+        expect(screen.getByRole('textbox', { name: 'Full Name' })).toBeInTheDocument();
+      });
+    });
   });
 });

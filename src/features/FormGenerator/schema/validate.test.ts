@@ -139,5 +139,23 @@ describe('features/FormGenerator/schema/validate', () => {
         expect(actual.errors).toHaveLength(0);
       });
     });
+
+    describe('textfield', () => {
+      it('should allow empty label of a text field', async () => {
+        const config = {
+          items: [
+            { type: InputType.textfield },
+          ],
+          actions: [
+            { type: ActionType.submit, text: 'Preview' },
+          ],
+        };
+
+        const actual = validate(config);
+
+        expect(actual.data).toEqual(config);
+        expect(actual.errors).toHaveLength(0);
+      });
+    });
   });
 });
