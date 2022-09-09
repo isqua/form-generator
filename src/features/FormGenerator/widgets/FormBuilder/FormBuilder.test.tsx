@@ -114,5 +114,20 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
         expect(screen.getByRole('textbox', { name: 'Full Name' })).toBeInTheDocument();
       });
     });
+
+    describe('checkbox', () => {
+      it('should render checkbox with label', () => {
+        const schema: IForm = {
+          items: [
+            { type: InputType.checkbox, label: 'Subscribe' },
+          ],
+          actions: [],
+        };
+
+        render(<FormBuilder schema={schema} />);
+
+        expect(screen.getByRole('checkbox', { name: 'Subscribe' })).toBeInTheDocument();
+      });
+    });
   });
 });

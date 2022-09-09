@@ -157,5 +157,41 @@ describe('features/FormGenerator/schema/validate', () => {
         expect(actual.errors).toHaveLength(0);
       });
     });
+
+    describe('checkbox', () => {
+      it('should require a label of a checkbox', async () => {
+        const config = {
+          items: [
+            { type: InputType.checkbox },
+          ],
+          actions: [
+            { type: ActionType.submit, text: 'Preview' },
+          ],
+        };
+
+        const actual = validate(config);
+
+        expect(actual.data).toBeNull();
+        expect(actual.errors).toContain(
+          "Form/items/0 must have required property 'label'",
+        );
+      });
+
+      it('should allow a checkbox with label', async () => {
+        const config = {
+          items: [
+            { type: InputType.checkbox, label: 'Send me spam' },
+          ],
+          actions: [
+            { type: ActionType.submit, text: 'Preview' },
+          ],
+        };
+
+        const actual = validate(config);
+
+        expect(actual.data).toEqual(config);
+        expect(actual.errors).toHaveLength(0);
+      });
+    });
   });
 });

@@ -2,9 +2,20 @@ import { JSONSchemaType } from 'ajv';
 import {
   InputType,
   IFormInput,
+  ICheckBoxInput,
   ITextAreaInput,
   ITextFieldInput,
 } from '../../../shared/types/form';
+
+const checkBoxInputSchema: JSONSchemaType<ICheckBoxInput> = {
+  type: 'object',
+  properties: {
+    type: { type: 'string', const: InputType.checkbox },
+    label: { type: 'string' },
+  },
+  required: ['type', 'label'],
+  additionalProperties: false,
+};
 
 const textAreaInputSchema: JSONSchemaType<ITextAreaInput> = {
   type: 'object',
@@ -29,6 +40,7 @@ const textFieldInputSchema: JSONSchemaType<ITextFieldInput> = {
 export const formInputSchema: JSONSchemaType<IFormInput> = {
   type: 'object',
   oneOf: [
+    checkBoxInputSchema,
     textAreaInputSchema,
     textFieldInputSchema,
   ],

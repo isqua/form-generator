@@ -1,4 +1,5 @@
 import React from 'react';
+import { CheckBox } from '../../../../shared/components/CheckBox';
 import { TextArea } from '../../../../shared/components/TextArea';
 import { TextInput } from '../../../../shared/components/TextInput';
 import { InputType } from '../../../../shared/types/form';
@@ -8,6 +9,12 @@ export function FormField({ schema }: IFormFieldProps): React.ReactElement {
   let exhaustiveCheck: never;
 
   switch (schema.type) {
+    case InputType.checkbox:
+      return (
+        <CheckBox
+          label={schema.label}
+        />
+      );
     case InputType.textarea:
       return (
         <TextArea

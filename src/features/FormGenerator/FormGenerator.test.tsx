@@ -9,6 +9,9 @@ const expectDefaultFormToBePresented = (screen: Screen) => {
   expect(screen.getByRole('heading', { name: 'Register' })).toBeInTheDocument();
   expect(screen.getByRole('textbox', { name: 'Full Name' })).toBeInTheDocument();
   expect(screen.getByRole('textbox', { name: 'Bio' })).toBeInTheDocument();
+  expect(
+    screen.getByRole('checkbox', { name: 'I agree to defined terms and policies' }),
+  ).toBeInTheDocument();
   expect(screen.getByRole('button', { name: 'Sign up' })).toBeInTheDocument();
 };
 
