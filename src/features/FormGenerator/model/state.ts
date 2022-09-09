@@ -20,6 +20,7 @@ export const defaultSchema: IForm = {
     { type: InputType.checkbox, label: 'I agree to defined terms and policies' },
   ],
   actions: [
+    { type: ActionType.reset, text: 'Cancel' },
     { type: ActionType.submit, text: 'Sign up' },
   ],
 };
