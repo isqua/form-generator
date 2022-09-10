@@ -1,31 +1,38 @@
-.app {
-  --main-text-color: #374151;
-  --secondary-text-color: #6b7280;
-  --placeholder-text-color: #9ca3af;
-  --error-text-color: #b91c1c;
-
-  --panel-background-color: #f1f5f9;
-
+:root {
   --gap-1: 0.25rem;
   --gap-2: 0.5rem;
   --gap-3: 0.75rem;
   --gap-4: 1rem;
   --gap-6: 1.5rem;
 
-  --control-border-color: #e5e7eb;
   --control-border-radius: 0.375rem;
+
+  --text-line-height: 1.25rem;
+  --small-font-size: 0.9rem;
+
+  --header-2-font-size: 1.25rem;
+  --header-2-line-height: 1.5rem;
+}
+
+:root {
+  --background-color: #fff;
+  --panel-background-color: #f1f5f9;
+
+  --main-text-color: #374151;
+  --secondary-text-color: #6b7280;
+  --placeholder-text-color: #9ca3af;
+  --error-text-color: #b91c1c;
+
+  --control-border-color: #e5e7eb;
 
   --action-background-color: #0ea5e9;
   --action-background-color-hover: #0284c7;
   --action-text-color: #fff;
   --action-text-color-disabled: rgba(255,255,255,0.75);
+}
 
-  --text-line-height: 1.25rem;
-
-  --header-2-font-size: 1.25rem;
-  --header-2-line-height: 1.5rem;
-
-  --small-font-size: 0.9rem;
+body {
+  background-color: var(--background-color);
 }
 
 .app {
