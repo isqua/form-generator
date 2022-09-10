@@ -4,6 +4,9 @@
 }
 
 .input {
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
+
   font-family: inherit;
   font-size: inherit;
   font-weight: normal;

@@ -31,6 +31,26 @@
   --action-text-color-disabled: rgba(255,255,255,0.75);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #1f2937;
+    --panel-background-color: #111827;
+
+    --main-text-color: #f9fafb;
+    --secondary-text-color: #d1d5db;
+    --placeholder-text-color: #9ca3af;
+    --error-text-color: #e11d48;
+
+    --control-border-color: #374151;
+    --control-border-radius: 0.375rem;
+
+    --action-background-color: #0284c7;
+    --action-background-color-hover: #0ea5e9;
+    --action-text-color: #fff;
+    --action-text-color-disabled: rgba(255,255,255,0.75);
+  }
+}
+
 body {
   background-color: var(--background-color);
 }
