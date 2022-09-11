@@ -24,7 +24,7 @@ export function CheckBox(props: ICheckBoxProps): React.ReactElement {
         <input
           id={htmlId}
           name={name}
-          defaultChecked={value}
+          value={value}
           type="checkbox"
           disabled={disabled}
           className={styles.input}

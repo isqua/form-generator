@@ -14,6 +14,7 @@ export function FormField({ schema }: IFormFieldProps): React.ReactElement {
       return (
         <CheckBox
           name={schema.name}
+          value={schema.value}
           label={schema.label}
           disabled={schema.disabled}
         />
@@ -22,6 +23,7 @@ export function FormField({ schema }: IFormFieldProps): React.ReactElement {
       return (
         <TextInput
           name={schema.name}
+          value={schema.value}
           label={schema.label}
           disabled={schema.disabled}
           type="date"
@@ -31,6 +33,7 @@ export function FormField({ schema }: IFormFieldProps): React.ReactElement {
       return (
         <TextInput
           name={schema.name}
+          value={typeof schema.value === 'number' ? schema.value.toString() : ''}
           label={schema.label}
           disabled={schema.disabled}
           placeholder={schema.placeholder}
@@ -50,6 +53,7 @@ export function FormField({ schema }: IFormFieldProps): React.ReactElement {
       return (
         <TextArea
           name={schema.name}
+          value={schema.value}
           label={schema.label}
           disabled={schema.disabled}
           placeholder={schema.placeholder}
@@ -59,6 +63,7 @@ export function FormField({ schema }: IFormFieldProps): React.ReactElement {
       return (
         <TextInput
           name={schema.name}
+          value={schema.value}
           label={schema.label}
           disabled={schema.disabled}
           placeholder={schema.placeholder}

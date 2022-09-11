@@ -33,15 +33,18 @@ export interface IAbstractFormInput {
 export interface ICheckBoxInput extends IAbstractFormInput {
   type: InputType.checkbox;
   label: string;
+  value?: string;
 }
 
 export interface IDateFieldInput extends IAbstractFormInput {
   type: InputType.datefield;
+  value?: string;
 }
 
 export interface INumberFieldInput extends IAbstractFormInput {
   type: InputType.numberfield;
   placeholder?: string;
+  value?: number;
 }
 
 export interface IRadioGroupInput extends IAbstractFormInput {
@@ -52,11 +55,13 @@ export interface IRadioGroupInput extends IAbstractFormInput {
 export interface ITextAreaInput extends IAbstractFormInput {
   type: InputType.textarea;
   placeholder?: string;
+  value?: string;
 }
 
 export interface ITextFieldInput extends IAbstractFormInput {
   type: InputType.textfield;
   placeholder?: string;
+  value?: string;
 }
 
 export type IFormInput =

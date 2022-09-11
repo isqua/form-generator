@@ -132,6 +132,7 @@ describe('features/FormGenerator/schema/validate', () => {
               label: 'Contacts',
               disabled: true,
               placeholder: 'Enter your email, phone or social media links',
+              value: 'emeow me',
             },
           ],
           actions: [
@@ -172,6 +173,7 @@ describe('features/FormGenerator/schema/validate', () => {
               label: 'Full Name',
               disabled: false,
               placeholder: 'Ludwig Mies van der Rohe',
+              value: 'Maria Ludwig Michael Mies',
             },
           ],
           actions: [
@@ -210,6 +212,7 @@ describe('features/FormGenerator/schema/validate', () => {
               type: InputType.checkbox,
               name: 'subscribe',
               label: 'Send me spam',
+              value: 'yes',
               disabled: true,
             },
           ],
@@ -385,6 +388,7 @@ describe('features/FormGenerator/schema/validate', () => {
               label: 'Count',
               disabled: true,
               placeholder: '394',
+              value: 512,
             },
           ],
           actions: [
@@ -424,6 +428,7 @@ describe('features/FormGenerator/schema/validate', () => {
               name: 'birthday',
               label: 'Your birthday',
               disabled: false,
+              value: '1887-10-06',
             },
           ],
           actions: [

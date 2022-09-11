@@ -68,6 +68,7 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
               name: 'description',
               label: 'Description',
               placeholder: 'write something inspiring',
+              value: 'Hello',
               disabled: false,
             },
           ],
@@ -80,6 +81,7 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
 
         expect(control).toBeInTheDocument();
         expect(control).toHaveAttribute('name', 'description');
+        expect(control).toHaveValue('Hello');
         expect(control).toBeEnabled();
         expect(control).toStrictEqual(screen.getByPlaceholderText('write something inspiring'));
       });
@@ -124,6 +126,7 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
               label: 'Full Name',
               disabled: false,
               placeholder: 'Walter Gropius',
+              value: 'Peter Behrens',
             },
           ],
           actions: [],
@@ -134,6 +137,7 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
         const control = screen.getByRole('textbox', { name: 'Full Name' });
         expect(control).toBeInTheDocument();
         expect(control).toHaveAttribute('name', 'full_name');
+        expect(control).toHaveValue('Peter Behrens');
         expect(control).toBeEnabled();
         expect(control).toStrictEqual(screen.getByPlaceholderText('Walter Gropius'));
       });
@@ -177,6 +181,7 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
               name: 'salary',
               label: 'Salary',
               placeholder: 'Desired net salary in USD',
+              value: 8600,
             },
           ],
           actions: [],
@@ -187,6 +192,7 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
         const control = screen.getByRole('spinbutton', { name: 'Salary' });
         expect(control).toBeInTheDocument();
         expect(control).toHaveAttribute('name', 'salary');
+        expect(control).toHaveValue(8600);
         expect(control).toStrictEqual(screen.getByPlaceholderText('Desired net salary in USD'));
       });
 
@@ -226,6 +232,7 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
             {
               type: InputType.datefield,
               name: 'onboarding',
+              value: '1919-04-12',
               label: 'Onboarding Date',
               disabled: false,
             },
@@ -238,6 +245,7 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
         const control = screen.getByLabelText('Onboarding Date');
         expect(control).toBeInTheDocument();
         expect(control).toHaveAttribute('name', 'onboarding');
+        expect(control).toHaveValue('1919-04-12');
         expect(control).toBeEnabled();
       });
 
@@ -278,6 +286,7 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
             {
               type: InputType.checkbox,
               name: 'subscription',
+              value: 'yes',
               label: 'Subscribe',
               disabled: false,
             },
@@ -290,6 +299,7 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
         const control = screen.getByRole('checkbox', { name: 'Subscribe' });
         expect(control).toBeInTheDocument();
         expect(control).toHaveAttribute('name', 'subscription');
+        expect(control).toHaveAttribute('value', 'yes');
         expect(control).toBeEnabled();
       });
 

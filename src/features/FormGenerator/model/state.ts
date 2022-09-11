@@ -1,6 +1,8 @@
 import { ActionType, InputType, IForm } from '../../../shared/types/form';
 import { IFormGeneratorState } from './types';
 
+const today = new Date().toISOString().slice(0, 10);
+
 export const defaultSchema: IForm = {
   title: 'Register',
   items: [
@@ -21,7 +23,12 @@ export const defaultSchema: IForm = {
         { value: 'linux', caption: 'Dell XPS 13” with Ubuntu' },
       ],
     },
-    { type: InputType.datefield, name: 'onboarding', label: 'Onboarding Date' },
+    {
+      type: InputType.datefield,
+      name: 'onboarding',
+      value: today,
+      label: 'Onboarding Date',
+    },
     { type: InputType.textarea, name: 'bio', label: 'Bio' },
     { type: InputType.checkbox, name: 'terms', label: 'I agree to defined terms and policies' },
   ],
