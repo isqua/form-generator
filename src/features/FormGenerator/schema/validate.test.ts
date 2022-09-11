@@ -214,6 +214,7 @@ describe('features/FormGenerator/schema/validate', () => {
               label: 'Send me spam',
               value: 'yes',
               disabled: true,
+              checked: false,
             },
           ],
           actions: [
@@ -255,7 +256,7 @@ describe('features/FormGenerator/schema/validate', () => {
               label: 'Radio',
               name: 'hehe',
               options: [
-                { value: 'foo', caption: 'Foo' },
+                { value: 'foo', caption: 'Foo', checked: true },
                 { value: 'bar', caption: 'Bar' },
               ],
               disabled: false,

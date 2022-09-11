@@ -34,6 +34,7 @@ export function RadioGroup(props: IRadioGroupProps): React.ReactElement {
             value={option.value}
             caption={option.caption}
             hint={option.hint}
+            checked={option.checked}
             disabled={disabled}
           />
         ))}

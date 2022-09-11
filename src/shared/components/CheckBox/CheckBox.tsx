@@ -10,6 +10,7 @@ import styles from './CheckBox.module.css';
 export function CheckBox(props: ICheckBoxProps): React.ReactElement {
   const {
     className,
+    checked,
     disabled,
     hint,
     label,
@@ -25,6 +26,7 @@ export function CheckBox(props: ICheckBoxProps): React.ReactElement {
           id={htmlId}
           name={name}
           value={value}
+          defaultChecked={checked}
           type="checkbox"
           disabled={disabled}
           className={styles.input}

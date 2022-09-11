@@ -17,6 +17,7 @@ export function FormField({ schema }: IFormFieldProps): React.ReactElement {
           value={schema.value}
           label={schema.label}
           disabled={schema.disabled}
+          checked={schema.checked}
         />
       );
     case InputType.datefield:

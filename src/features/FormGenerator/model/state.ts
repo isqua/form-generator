@@ -18,7 +18,7 @@ export const defaultSchema: IForm = {
       name: 'laptop',
       label: 'Preferred Laptop',
       options: [
-        { value: 'mac', caption: 'MacBook Pro 13”' },
+        { value: 'mac', caption: 'MacBook Pro 13”', checked: true },
         { value: 'windows', caption: 'Dell XPS 13” with Windows' },
         { value: 'linux', caption: 'Dell XPS 13” with Ubuntu' },
       ],
@@ -30,7 +30,12 @@ export const defaultSchema: IForm = {
       label: 'Onboarding Date',
     },
     { type: InputType.textarea, name: 'bio', label: 'Bio' },
-    { type: InputType.checkbox, name: 'terms', label: 'I agree to defined terms and policies' },
+    {
+      type: InputType.checkbox,
+      name: 'terms',
+      checked: true,
+      label: 'I agree to defined terms and policies',
+    },
   ],
   actions: [
     { type: ActionType.reset, text: 'Cancel' },

@@ -2,6 +2,7 @@ interface IRadioGroupOption {
   value: string;
   caption: string;
   hint?: string;
+  checked?: boolean;
 }
 
 export interface IRadioGroupProps {
@@ -11,4 +12,5 @@ export interface IRadioGroupProps {
   label?: string;
   hint?: string;
   disabled?: boolean;
+  checked?: boolean;
 }

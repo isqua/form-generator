@@ -21,6 +21,7 @@ export enum InputType {
 export interface IInputOption {
   value: string;
   caption: string;
+  checked?: boolean;
 }
 
 export interface IAbstractFormInput {
@@ -34,6 +35,7 @@ export interface ICheckBoxInput extends IAbstractFormInput {
   type: InputType.checkbox;
   label: string;
   value?: string;
+  checked?: boolean;
 }
 
 export interface IDateFieldInput extends IAbstractFormInput {

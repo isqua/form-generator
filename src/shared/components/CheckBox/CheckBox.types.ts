@@ -4,5 +4,6 @@ export interface ICheckBoxProps {
   hint?: string;
   value?: string;
   disabled?: boolean;
+  checked?: boolean;
   name?: string;
 }

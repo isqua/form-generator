@@ -16,6 +16,7 @@ const inputOptionSchema: JSONSchemaType<IInputOption> = {
   properties: {
     value: { type: 'string' },
     caption: { type: 'string' },
+    checked: { type: 'boolean', nullable: true },
   },
   required: ['value', 'caption'],
   additionalProperties: false,
@@ -29,6 +30,7 @@ const checkBoxInputSchema: JSONSchemaType<ICheckBoxInput> = {
     value: { type: 'string', nullable: true },
     label: { type: 'string' },
     disabled: { type: 'boolean', nullable: true },
+    checked: { type: 'boolean', nullable: true },
   },
   required: ['type', 'label'],
   additionalProperties: false,

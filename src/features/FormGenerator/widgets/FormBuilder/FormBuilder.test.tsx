@@ -319,6 +319,22 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
         expect(screen.getByRole('checkbox')).toBeDisabled();
       });
 
+      it('should render checked checkbox if checked property is true', () => {
+        const schema: IForm = {
+          items: [
+            {
+              type: InputType.checkbox,
+              label: 'Check me if you can',
+              checked: true,
+            },
+          ],
+          actions: [],
+        };
+
+        render(<FormBuilder schema={schema} />);
+        expect(screen.getByRole('checkbox')).toBeChecked();
+      });
+
       it('should render a checkbox with required properties only', () => {
         const schema: IForm = {
           items: [
@@ -391,6 +407,26 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
         render(<FormBuilder schema={schema} />);
         expect(screen.getByRole('radio', { name: 'Foo' })).toBeDisabled();
         expect(screen.getByRole('radio', { name: 'Bar' })).toBeDisabled();
+      });
+
+      it('should check value in a radio group if an option has checked attribute', () => {
+        const schema: IForm = {
+          items: [
+            {
+              type: InputType.radiogroup,
+              options: [
+                { value: 'foo', caption: 'Foo' },
+                { value: 'bar', caption: 'Bar', checked: true },
+              ],
+              disabled: true,
+            },
+          ],
+          actions: [],
+        };
+
+        render(<FormBuilder schema={schema} />);
+
+        expect(screen.getByRole('radio', { name: 'Bar' })).toBeChecked();
       });
 
       it('should render a radio group with required properties only', () => {
