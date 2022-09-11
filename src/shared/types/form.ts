@@ -24,8 +24,9 @@ export interface IInputOption {
 }
 
 export interface IAbstractFormInput {
-  label?: string;
   type: InputType;
+  label?: string;
+  name?: string;
 }
 
 export interface ICheckBoxInput extends IAbstractFormInput {

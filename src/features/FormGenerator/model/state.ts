@@ -4,10 +4,11 @@ import { IFormGeneratorState } from './types';
 export const defaultSchema: IForm = {
   title: 'Register',
   items: [
-    { type: InputType.textfield, label: 'Full Name' },
-    { type: InputType.numberfield, label: 'Annual Compensation' },
+    { type: InputType.textfield, name: 'name', label: 'Full Name' },
+    { type: InputType.numberfield, name: 'compensation', label: 'Annual Compensation' },
     {
       type: InputType.radiogroup,
+      name: 'laptop',
       label: 'Preferred Laptop',
       options: [
         { value: 'mac', caption: 'MacBook Pro 13”' },
@@ -15,9 +16,9 @@ export const defaultSchema: IForm = {
         { value: 'linux', caption: 'Dell XPS 13” with Ubuntu' },
       ],
     },
-    { type: InputType.datefield, label: 'Onboarding Date' },
-    { type: InputType.textarea, label: 'Bio' },
-    { type: InputType.checkbox, label: 'I agree to defined terms and policies' },
+    { type: InputType.datefield, name: 'onboarding', label: 'Onboarding Date' },
+    { type: InputType.textarea, name: 'bio', label: 'Bio' },
+    { type: InputType.checkbox, name: 'terms', label: 'I agree to defined terms and policies' },
   ],
   actions: [
     { type: ActionType.reset, text: 'Cancel' },

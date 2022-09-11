@@ -123,6 +123,26 @@ describe('features/FormGenerator/schema/validate', () => {
     });
 
     describe('textarea', () => {
+      it('should parse a full configured textarea', async () => {
+        const config = {
+          items: [
+            {
+              type: InputType.textarea,
+              name: 'contacts',
+              label: 'Contacts',
+            },
+          ],
+          actions: [
+            { type: ActionType.submit, text: 'Preview' },
+          ],
+        };
+
+        const actual = validate(config);
+
+        expect(actual.data).toEqual(config);
+        expect(actual.errors).toHaveLength(0);
+      });
+
       it('should allow empty label of a textarea', async () => {
         const config = {
           items: [
@@ -141,6 +161,26 @@ describe('features/FormGenerator/schema/validate', () => {
     });
 
     describe('textfield', () => {
+      it('should parse a full configured textfield', async () => {
+        const config = {
+          items: [
+            {
+              type: InputType.textfield,
+              name: 'name',
+              label: 'Full Name',
+            },
+          ],
+          actions: [
+            { type: ActionType.submit, text: 'Preview' },
+          ],
+        };
+
+        const actual = validate(config);
+
+        expect(actual.data).toEqual(config);
+        expect(actual.errors).toHaveLength(0);
+      });
+
       it('should allow empty label of a text field', async () => {
         const config = {
           items: [
@@ -159,6 +199,26 @@ describe('features/FormGenerator/schema/validate', () => {
     });
 
     describe('checkbox', () => {
+      it('should parse a full configured checkbox', async () => {
+        const config = {
+          items: [
+            {
+              type: InputType.checkbox,
+              name: 'subscribe',
+              label: 'Send me spam',
+            },
+          ],
+          actions: [
+            { type: ActionType.submit, text: 'Preview' },
+          ],
+        };
+
+        const actual = validate(config);
+
+        expect(actual.data).toEqual(config);
+        expect(actual.errors).toHaveLength(0);
+      });
+
       it('should require a label of a checkbox', async () => {
         const config = {
           items: [
@@ -176,31 +236,16 @@ describe('features/FormGenerator/schema/validate', () => {
           "Form/items/0 must have required property 'label'",
         );
       });
-
-      it('should allow a checkbox with label', async () => {
-        const config = {
-          items: [
-            { type: InputType.checkbox, label: 'Send me spam' },
-          ],
-          actions: [
-            { type: ActionType.submit, text: 'Preview' },
-          ],
-        };
-
-        const actual = validate(config);
-
-        expect(actual.data).toEqual(config);
-        expect(actual.errors).toHaveLength(0);
-      });
     });
 
     describe('radiogroup', () => {
-      it('should parse valid radiogroup', async () => {
+      it('should parse a full configured radiogroup', async () => {
         const config = {
           items: [
             {
               type: InputType.radiogroup,
               label: 'Radio',
+              name: 'hehe',
               options: [
                 { value: 'foo', caption: 'Foo' },
                 { value: 'bar', caption: 'Bar' },
@@ -324,6 +369,26 @@ describe('features/FormGenerator/schema/validate', () => {
     });
 
     describe('numberfield', () => {
+      it('should parse a full configured numberfield', async () => {
+        const config = {
+          items: [
+            {
+              type: InputType.numberfield,
+              name: 'count',
+              label: 'Count',
+            },
+          ],
+          actions: [
+            { type: ActionType.submit, text: 'Preview' },
+          ],
+        };
+
+        const actual = validate(config);
+
+        expect(actual.data).toEqual(config);
+        expect(actual.errors).toHaveLength(0);
+      });
+
       it('should allow empty label of a number field', async () => {
         const config = {
           items: [
@@ -342,6 +407,26 @@ describe('features/FormGenerator/schema/validate', () => {
     });
 
     describe('datefield', () => {
+      it('should parse a full configured datefield', async () => {
+        const config = {
+          items: [
+            {
+              type: InputType.datefield,
+              name: 'birthday',
+              label: 'Your birthday',
+            },
+          ],
+          actions: [
+            { type: ActionType.submit, text: 'Preview' },
+          ],
+        };
+
+        const actual = validate(config);
+
+        expect(actual.data).toEqual(config);
+        expect(actual.errors).toHaveLength(0);
+      });
+
       it('should allow empty label of a date field', async () => {
         const config = {
           items: [

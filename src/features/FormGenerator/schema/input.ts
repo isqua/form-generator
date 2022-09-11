@@ -25,6 +25,7 @@ const checkBoxInputSchema: JSONSchemaType<ICheckBoxInput> = {
   type: 'object',
   properties: {
     type: { type: 'string', const: InputType.checkbox },
+    name: { type: 'string', nullable: true },
     label: { type: 'string' },
   },
   required: ['type', 'label'],
@@ -35,6 +36,7 @@ const dateFieldInputSchema: JSONSchemaType<IDateFieldInput> = {
   type: 'object',
   properties: {
     type: { type: 'string', const: InputType.datefield },
+    name: { type: 'string', nullable: true },
     label: { type: 'string', nullable: true },
   },
   required: ['type'],
@@ -45,6 +47,7 @@ const numberFieldInputSchema: JSONSchemaType<INumberFieldInput> = {
   type: 'object',
   properties: {
     type: { type: 'string', const: InputType.numberfield },
+    name: { type: 'string', nullable: true },
     label: { type: 'string', nullable: true },
   },
   required: ['type'],
@@ -55,6 +58,7 @@ const radioGroupInputSchema: JSONSchemaType<IRadioGroupInput> = {
   type: 'object',
   properties: {
     type: { type: 'string', const: InputType.radiogroup },
+    name: { type: 'string', nullable: true },
     label: { type: 'string', nullable: true },
     options: { type: 'array', items: inputOptionSchema, minItems: 2 },
   },
@@ -66,6 +70,7 @@ const textAreaInputSchema: JSONSchemaType<ITextAreaInput> = {
   type: 'object',
   properties: {
     type: { type: 'string', const: InputType.textarea },
+    name: { type: 'string', nullable: true },
     label: { type: 'string', nullable: true },
   },
   required: ['type'],
@@ -76,6 +81,7 @@ const textFieldInputSchema: JSONSchemaType<ITextFieldInput> = {
   type: 'object',
   properties: {
     type: { type: 'string', const: InputType.textfield },
+    name: { type: 'string', nullable: true },
     label: { type: 'string', nullable: true },
   },
   required: ['type'],

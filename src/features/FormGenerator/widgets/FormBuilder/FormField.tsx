@@ -13,12 +13,14 @@ export function FormField({ schema }: IFormFieldProps): React.ReactElement {
     case InputType.checkbox:
       return (
         <CheckBox
+          name={schema.name}
           label={schema.label}
         />
       );
     case InputType.datefield:
       return (
         <TextInput
+          name={schema.name}
           label={schema.label}
           type="date"
         />
@@ -26,6 +28,7 @@ export function FormField({ schema }: IFormFieldProps): React.ReactElement {
     case InputType.numberfield:
       return (
         <TextInput
+          name={schema.name}
           label={schema.label}
           type="number"
         />
@@ -33,6 +36,7 @@ export function FormField({ schema }: IFormFieldProps): React.ReactElement {
     case InputType.radiogroup:
       return (
         <RadioGroup
+          name={schema.name}
           label={schema.label}
           options={schema.options}
         />
@@ -40,12 +44,14 @@ export function FormField({ schema }: IFormFieldProps): React.ReactElement {
     case InputType.textarea:
       return (
         <TextArea
+          name={schema.name}
           label={schema.label}
         />
       );
     case InputType.textfield:
       return (
         <TextInput
+          name={schema.name}
           label={schema.label}
           type="text"
         />

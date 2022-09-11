@@ -60,10 +60,30 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
 
   describe('fields', () => {
     describe('textarea', () => {
-      it('should render textarea without label', () => {
+      it('should render fully configured textarea', () => {
         const schema: IForm = {
           items: [
-            { type: InputType.textarea, label: '' },
+            {
+              type: InputType.textarea,
+              name: 'description',
+              label: 'Description',
+            },
+          ],
+          actions: [],
+        };
+
+        render(<FormBuilder schema={schema} />);
+
+        const control = screen.getByRole('textbox', { name: 'Description' });
+
+        expect(control).toBeInTheDocument();
+        expect(control).toHaveAttribute('name', 'description');
+      });
+
+      it('should render a textarea with required properties only', () => {
+        const schema: IForm = {
+          items: [
+            { type: InputType.textarea },
           ],
           actions: [],
         };
@@ -71,27 +91,33 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
         render(<FormBuilder schema={schema} />);
 
         expect(screen.getByRole('textbox', { name: '' })).toBeInTheDocument();
-      });
-
-      it('should render textarea with label', () => {
-        const schema: IForm = {
-          items: [
-            { type: InputType.textarea, label: 'Description' },
-          ],
-          actions: [],
-        };
-
-        render(<FormBuilder schema={schema} />);
-
-        expect(screen.getByRole('textbox', { name: 'Description' })).toBeInTheDocument();
       });
     });
 
     describe('text field', () => {
-      it('should render text field without label', () => {
+      it('should render fully configured text field', () => {
         const schema: IForm = {
           items: [
-            { type: InputType.textfield, label: '' },
+            {
+              type: InputType.textfield,
+              name: 'full_name',
+              label: 'Full Name',
+            },
+          ],
+          actions: [],
+        };
+
+        render(<FormBuilder schema={schema} />);
+
+        const control = screen.getByRole('textbox', { name: 'Full Name' });
+        expect(control).toBeInTheDocument();
+        expect(control).toHaveAttribute('name', 'full_name');
+      });
+
+      it('should render text field with required properties only', () => {
+        const schema: IForm = {
+          items: [
+            { type: InputType.textfield },
           ],
           actions: [],
         };
@@ -100,23 +126,29 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
 
         expect(screen.getByRole('textbox', { name: '' })).toBeInTheDocument();
       });
+    });
 
-      it('should render text field with label', () => {
+    describe('number field', () => {
+      it('should render fully configured number field', () => {
         const schema: IForm = {
           items: [
-            { type: InputType.textfield, label: 'Full Name' },
+            {
+              type: InputType.numberfield,
+              name: 'salary',
+              label: 'Salary',
+            },
           ],
           actions: [],
         };
 
         render(<FormBuilder schema={schema} />);
 
-        expect(screen.getByRole('textbox', { name: 'Full Name' })).toBeInTheDocument();
+        const control = screen.getByRole('spinbutton', { name: 'Salary' });
+        expect(control).toBeInTheDocument();
+        expect(control).toHaveAttribute('name', 'salary');
       });
-    });
 
-    describe('number field', () => {
-      it('should render text number without label', () => {
+      it('should render number field with required properties only', () => {
         const schema: IForm = {
           items: [
             { type: InputType.numberfield },
@@ -128,23 +160,29 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
 
         expect(screen.getByRole('spinbutton', { name: '' })).toBeInTheDocument();
       });
+    });
 
-      it('should render number field with label', () => {
+    describe('date field', () => {
+      it('should render fully configured date field', () => {
         const schema: IForm = {
           items: [
-            { type: InputType.numberfield, label: 'Salary' },
+            {
+              type: InputType.datefield,
+              name: 'onboarding',
+              label: 'Onboarding Date',
+            },
           ],
           actions: [],
         };
 
         render(<FormBuilder schema={schema} />);
 
-        expect(screen.getByRole('spinbutton', { name: 'Salary' })).toBeInTheDocument();
+        const control = screen.getByLabelText('Onboarding Date');
+        expect(control).toBeInTheDocument();
+        expect(control).toHaveAttribute('name', 'onboarding');
       });
-    });
 
-    describe('date field', () => {
-      it('should render text date without label', () => {
+      it('should render date field with required properties only', () => {
         const schema: IForm = {
           items: [
             { type: InputType.datefield },
@@ -156,26 +194,35 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
 
         expect(container.querySelector('input[type=date]')).toBeInTheDocument();
       });
+    });
 
-      it('should render date field with label', () => {
+    describe('checkbox', () => {
+      it('should render fully configured checkbox', () => {
         const schema: IForm = {
           items: [
-            { type: InputType.datefield, label: 'Onboarding Date' },
+            {
+              type: InputType.checkbox,
+              name: 'subscription',
+              label: 'Subscribe',
+            },
           ],
           actions: [],
         };
 
         render(<FormBuilder schema={schema} />);
 
-        expect(screen.getByLabelText('Onboarding Date')).toBeInTheDocument();
+        const control = screen.getByRole('checkbox', { name: 'Subscribe' });
+        expect(control).toBeInTheDocument();
+        expect(control).toHaveAttribute('name', 'subscription');
       });
-    });
 
-    describe('checkbox', () => {
-      it('should render checkbox with label', () => {
+      it('should render a checkbox with required properties only', () => {
         const schema: IForm = {
           items: [
-            { type: InputType.checkbox, label: 'Subscribe' },
+            {
+              type: InputType.checkbox,
+              label: 'Subscribe',
+            },
           ],
           actions: [],
         };
@@ -187,7 +234,40 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
     });
 
     describe('radio group', () => {
-      it('should render a working radio group', () => {
+      it('should render fully configured radio group', () => {
+        const schema: IForm = {
+          items: [
+            {
+              type: InputType.radiogroup,
+              name: 'hardchoice',
+              label: 'Radio',
+              options: [
+                { value: 'foo', caption: 'Foo' },
+                { value: 'bar', caption: 'Bar' },
+              ],
+            },
+          ],
+          actions: [],
+        };
+
+        render(<FormBuilder schema={schema} />);
+
+        const fooOption = screen.getByRole('radio', { name: 'Foo' });
+        const barOption = screen.getByRole('radio', { name: 'Bar' });
+        expect(fooOption).toBeInTheDocument();
+        expect(fooOption).toHaveAttribute('name', 'hardchoice');
+        expect(barOption).toBeInTheDocument();
+        expect(barOption).toHaveAttribute('name', 'hardchoice');
+
+        fireEvent.click(screen.getByText('Foo'));
+        expect(fooOption).toBeChecked();
+
+        fireEvent.click(screen.getByText('Bar'));
+        expect(barOption).toBeChecked();
+        expect(fooOption).not.toBeChecked();
+      });
+
+      it('should render a radio group with required properties only', () => {
         const schema: IForm = {
           items: [
             {
@@ -204,15 +284,17 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
 
         render(<FormBuilder schema={schema} />);
 
-        expect(screen.getByRole('radio', { name: 'Foo' })).toBeInTheDocument();
-        expect(screen.getByRole('radio', { name: 'Bar' })).toBeInTheDocument();
+        const fooOption = screen.getByRole('radio', { name: 'Foo' });
+        const barOption = screen.getByRole('radio', { name: 'Bar' });
+        expect(fooOption).toBeInTheDocument();
+        expect(barOption).toBeInTheDocument();
 
         fireEvent.click(screen.getByText('Foo'));
-        expect(screen.getByRole('radio', { name: 'Foo' })).toBeChecked();
+        expect(fooOption).toBeChecked();
 
         fireEvent.click(screen.getByText('Bar'));
-        expect(screen.getByRole('radio', { name: 'Bar' })).toBeChecked();
-        expect(screen.getByRole('radio', { name: 'Foo' })).not.toBeChecked();
+        expect(barOption).toBeChecked();
+        expect(fooOption).not.toBeChecked();
       });
     });
   });
