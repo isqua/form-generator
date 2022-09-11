@@ -130,6 +130,7 @@ describe('features/FormGenerator/schema/validate', () => {
               type: InputType.textarea,
               name: 'contacts',
               label: 'Contacts',
+              disabled: true,
             },
           ],
           actions: [
@@ -168,6 +169,7 @@ describe('features/FormGenerator/schema/validate', () => {
               type: InputType.textfield,
               name: 'name',
               label: 'Full Name',
+              disabled: false,
             },
           ],
           actions: [
@@ -206,6 +208,7 @@ describe('features/FormGenerator/schema/validate', () => {
               type: InputType.checkbox,
               name: 'subscribe',
               label: 'Send me spam',
+              disabled: true,
             },
           ],
           actions: [
@@ -250,6 +253,7 @@ describe('features/FormGenerator/schema/validate', () => {
                 { value: 'foo', caption: 'Foo' },
                 { value: 'bar', caption: 'Bar' },
               ],
+              disabled: false,
             },
           ],
           actions: [
@@ -272,6 +276,7 @@ describe('features/FormGenerator/schema/validate', () => {
                 { value: 'foo', caption: 'Foo' },
                 { value: 'bar', caption: 'Bar' },
               ],
+              disabled: false,
             },
           ],
           actions: [
@@ -376,6 +381,7 @@ describe('features/FormGenerator/schema/validate', () => {
               type: InputType.numberfield,
               name: 'count',
               label: 'Count',
+              disabled: true,
             },
           ],
           actions: [
@@ -414,6 +420,7 @@ describe('features/FormGenerator/schema/validate', () => {
               type: InputType.datefield,
               name: 'birthday',
               label: 'Your birthday',
+              disabled: false,
             },
           ],
           actions: [

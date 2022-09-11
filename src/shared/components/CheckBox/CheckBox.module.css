@@ -12,6 +12,11 @@
   height: 1rem;
 }
 
+.input:disabled {
+  background-color: var(--control-background-color-disabled);
+  cursor: not-allowed;
+}
+
 .text {
   margin-left: var(--gap-3);
   font-size: var(--small-font-size);

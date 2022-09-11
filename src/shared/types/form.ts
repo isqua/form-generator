@@ -27,6 +27,7 @@ export interface IAbstractFormInput {
   type: InputType;
   label?: string;
   name?: string;
+  disabled?: boolean;
 }
 
 export interface ICheckBoxInput extends IAbstractFormInput {

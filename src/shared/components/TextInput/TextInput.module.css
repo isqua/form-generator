@@ -22,3 +22,8 @@
 .input::placeholder {
   color: var(--placeholder-text-color);
 }
+
+.input:disabled {
+  background-color: var(--control-background-color-disabled);
+  cursor: not-allowed;
+}
