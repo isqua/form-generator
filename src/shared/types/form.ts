@@ -41,6 +41,7 @@ export interface IDateFieldInput extends IAbstractFormInput {
 
 export interface INumberFieldInput extends IAbstractFormInput {
   type: InputType.numberfield;
+  placeholder?: string;
 }
 
 export interface IRadioGroupInput extends IAbstractFormInput {
@@ -50,10 +51,12 @@ export interface IRadioGroupInput extends IAbstractFormInput {
 
 export interface ITextAreaInput extends IAbstractFormInput {
   type: InputType.textarea;
+  placeholder?: string;
 }
 
 export interface ITextFieldInput extends IAbstractFormInput {
   type: InputType.textfield;
+  placeholder?: string;
 }
 
 export type IFormInput =

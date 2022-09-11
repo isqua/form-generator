@@ -67,6 +67,7 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
               type: InputType.textarea,
               name: 'description',
               label: 'Description',
+              placeholder: 'write something inspiring',
               disabled: false,
             },
           ],
@@ -80,6 +81,7 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
         expect(control).toBeInTheDocument();
         expect(control).toHaveAttribute('name', 'description');
         expect(control).toBeEnabled();
+        expect(control).toStrictEqual(screen.getByPlaceholderText('write something inspiring'));
       });
 
       it('should render disabled textarea if disabled property is true', () => {
@@ -121,6 +123,7 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
               name: 'full_name',
               label: 'Full Name',
               disabled: false,
+              placeholder: 'Walter Gropius',
             },
           ],
           actions: [],
@@ -132,6 +135,7 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
         expect(control).toBeInTheDocument();
         expect(control).toHaveAttribute('name', 'full_name');
         expect(control).toBeEnabled();
+        expect(control).toStrictEqual(screen.getByPlaceholderText('Walter Gropius'));
       });
 
       it('should render disabled text field if disabled property is true', () => {
@@ -172,6 +176,7 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
               type: InputType.numberfield,
               name: 'salary',
               label: 'Salary',
+              placeholder: 'Desired net salary in USD',
             },
           ],
           actions: [],
@@ -182,6 +187,7 @@ describe('features/FormGenerator/widgets/FormBuilder', () => {
         const control = screen.getByRole('spinbutton', { name: 'Salary' });
         expect(control).toBeInTheDocument();
         expect(control).toHaveAttribute('name', 'salary');
+        expect(control).toStrictEqual(screen.getByPlaceholderText('Desired net salary in USD'));
       });
 
       it('should render disabled number field if disabled property is true', () => {

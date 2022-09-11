@@ -131,6 +131,7 @@ describe('features/FormGenerator/schema/validate', () => {
               name: 'contacts',
               label: 'Contacts',
               disabled: true,
+              placeholder: 'Enter your email, phone or social media links',
             },
           ],
           actions: [
@@ -170,6 +171,7 @@ describe('features/FormGenerator/schema/validate', () => {
               name: 'name',
               label: 'Full Name',
               disabled: false,
+              placeholder: 'Ludwig Mies van der Rohe',
             },
           ],
           actions: [
@@ -382,6 +384,7 @@ describe('features/FormGenerator/schema/validate', () => {
               name: 'count',
               label: 'Count',
               disabled: true,
+              placeholder: '394',
             },
           ],
           actions: [

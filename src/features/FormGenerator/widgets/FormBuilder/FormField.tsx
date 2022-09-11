@@ -33,6 +33,7 @@ export function FormField({ schema }: IFormFieldProps): React.ReactElement {
           name={schema.name}
           label={schema.label}
           disabled={schema.disabled}
+          placeholder={schema.placeholder}
           type="number"
         />
       );
@@ -51,6 +52,7 @@ export function FormField({ schema }: IFormFieldProps): React.ReactElement {
           name={schema.name}
           label={schema.label}
           disabled={schema.disabled}
+          placeholder={schema.placeholder}
         />
       );
     case InputType.textfield:
@@ -59,6 +61,7 @@ export function FormField({ schema }: IFormFieldProps): React.ReactElement {
           name={schema.name}
           label={schema.label}
           disabled={schema.disabled}
+          placeholder={schema.placeholder}
           type="text"
         />
       );

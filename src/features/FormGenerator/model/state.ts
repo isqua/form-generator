@@ -4,7 +4,12 @@ import { IFormGeneratorState } from './types';
 export const defaultSchema: IForm = {
   title: 'Register',
   items: [
-    { type: InputType.textfield, name: 'name', label: 'Full Name' },
+    {
+      type: InputType.textfield,
+      name: 'name',
+      label: 'Full Name',
+      placeholder: 'Jane Doe',
+    },
     { type: InputType.numberfield, name: 'compensation', label: 'Annual Compensation' },
     {
       type: InputType.radiogroup,
