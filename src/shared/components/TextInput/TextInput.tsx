@@ -27,7 +27,7 @@ export function TextInput(props: ITextInputProps): React.ReactElement {
       <input
         id={htmlId}
         name={name}
-        value={value}
+        defaultValue={value}
         type={type}
         placeholder={placeholder}
         disabled={disabled}
