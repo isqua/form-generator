@@ -25,6 +25,19 @@ So, from a bird's eye view, the structure is as follows:
         - [types/](./src/features/FormGenerator/types/) directory describes feature-specific typings.
 1. [shared/](./src/shared/) directory contains utils and non-specific components.
 
+## Deep Dive into FormGenerator
+
+The [FormGenerator](./src/features/FormGenerator/) feature workflow is as follows:
+1. The [FormParser](./src/features/FormGenerator/widgets/FormParser/FormParser.tsx) takes user input and dispatches state change.
+1. The [reducer](./src/features/FormGenerator/model/reducer.ts) handles this action and validates user input according to the [schema](./src/features/FormGenerator/schema/form.ts). Then it builds a new state with a *parsed* schema and/or validation errors. E.g., if there are some validation errors, we should not change or delete the schema, to show the last *valid* form.
+1. Finally, the [FormBuilder](./src/features/FormGenerator/widgets/FormBuilder/FormBuilder.tsx) renders a form by the schema from the state (last valid state, I mean).
+
+### How to add a new input type
+
+1. First of all, describe the new input type: [FormGenerator/types](./src/features/FormGenerator/types/form.ts).
+1. Then, write a schema in the [Ajv](https://ajv.js.org/guide/getting-started.html) to validate the input declaration. Don’t forget to add it to the general `formInputSchema`: [FormGenerator/schema](./src/features/FormGenerator/schema/input.ts) + [tests](./src/features/FormGenerator/schema/validate.test.ts).
+1. Then teach the FormBuilder to render your new component: [FormGenerator/widgets/FormBuilder/FormField](./src/features/FormGenerator/widgets/FormBuilder/FormField.tsx) + [tests](./src/features/FormGenerator/widgets/FormBuilder/FormBuilder.test.tsx).
+
 ## Available Scripts
 
 In the project directory, you can run:
