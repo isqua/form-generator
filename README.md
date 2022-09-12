@@ -65,3 +65,7 @@ Uses [eslint](https://www.npmjs.com/package/eslint).
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+## License
+
+This app is [GPL licensed](./LICENSE).
