@@ -34,6 +34,7 @@ export function Form(props: IFormProps): React.ReactElement {
               // eslint-disable-next-line react/no-array-index-key
               key={index}
               type={action.type}
+              theme={action.theme}
               disabled={action.disabled}
               onClick={action.onClick}
             >

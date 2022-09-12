@@ -30,6 +30,9 @@
   --action-background-color-hover: #0284c7;
   --action-text-color: #fff;
   --action-text-color-disabled: rgba(255,255,255,0.75);
+
+  --action-flat-background-color: #e2e8f0;
+  --action-flat-background-color-hover: #cbd5e1;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -49,6 +52,9 @@
     --action-background-color-hover: #0ea5e9;
     --action-text-color: #fff;
     --action-text-color-disabled: rgba(255,255,255,0.75);
+
+    --action-flat-background-color: #334155;
+    --action-flat-background-color-hover: #4b5563;
   }
 }
 

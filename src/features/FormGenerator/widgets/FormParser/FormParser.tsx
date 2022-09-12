@@ -58,7 +58,7 @@ export function FormParser(props: IFormParserProps): React.ReactElement {
       children: 'Rollback',
       onClick: onRollback,
     },
-  ];
+  ].map((action) => ({ ...action, theme: 'flat' }) as IButtonProps);
 
   return (
     <Form

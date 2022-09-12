@@ -38,3 +38,12 @@
   color: var(--action-text-color);
   background-color: var(--action-background-color-hover);
 }
+
+.control.theme_flat {
+  background-color: var(--action-flat-background-color);
+}
+
+.control.theme_flat:not(:disabled):hover,
+.control.theme_flat:not(:disabled):focus {
+  background-color: var(--action-flat-background-color-hover);
+}

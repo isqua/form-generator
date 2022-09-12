@@ -4,9 +4,13 @@ import { IButtonProps } from './Button.types';
 
 import styles from './Button.module.css';
 
+const themes = {
+  flat: styles.theme_flat,
+};
+
 export function Button(props: IButtonProps): React.ReactElement {
   const {
-    type, disabled, children, onClick, className,
+    type, disabled, children, onClick, className, theme,
   } = props;
 
   return (
@@ -14,7 +18,7 @@ export function Button(props: IButtonProps): React.ReactElement {
       // eslint-disable-next-line react/button-has-type
       type={type}
       disabled={disabled}
-      className={clx(styles.control, className)}
+      className={clx(styles.control, className, theme && themes[theme])}
       onClick={onClick}
     >
       {children}
