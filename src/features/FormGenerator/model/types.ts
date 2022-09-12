@@ -1,4 +1,4 @@
-import { IForm } from '../../../shared/types/form';
+import { IForm } from '../types/form';
 
 export enum FormGeneratorAction {
   update = 'update',

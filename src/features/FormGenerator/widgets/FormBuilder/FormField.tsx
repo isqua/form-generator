@@ -3,7 +3,7 @@ import { CheckBox } from '../../../../shared/components/CheckBox';
 import { RadioGroup } from '../../../../shared/components/RadioGroup';
 import { TextArea } from '../../../../shared/components/TextArea';
 import { TextInput } from '../../../../shared/components/TextInput';
-import { InputType } from '../../../../shared/types/form';
+import { InputType } from '../../types/form';
 import { IFormFieldProps } from './FormField.types';
 
 export function FormField({ schema }: IFormFieldProps): React.ReactElement {

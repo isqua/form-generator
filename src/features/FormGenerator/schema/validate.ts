@@ -1,7 +1,7 @@
 import Ajv from 'ajv';
 import { formSchema } from './form';
 import { formatErrors } from './errors';
-import { IForm } from '../../../shared/types/form';
+import { IForm } from '../types/form';
 
 interface ValidResult {
   data: IForm;

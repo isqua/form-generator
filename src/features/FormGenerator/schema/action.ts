@@ -1,6 +1,6 @@
 import { JSONSchemaType } from 'ajv';
 
-import { ActionType, FormAction } from '../../../shared/types/form';
+import { ActionType, FormAction } from '../types/form';
 
 export const formActionSchema: JSONSchemaType<FormAction> = {
   type: 'object',

@@ -1,5 +1,5 @@
 import { JSONSchemaType } from 'ajv';
-import { IForm } from '../../../shared/types/form';
+import { IForm } from '../types/form';
 import { formActionSchema } from './action';
 import { formInputSchema } from './input';
 

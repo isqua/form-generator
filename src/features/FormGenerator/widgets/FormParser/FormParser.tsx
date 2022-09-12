@@ -3,7 +3,7 @@ import React from 'react';
 import { Form } from '../../../../shared/components/Form';
 import { FormError } from '../../../../shared/components/FormError';
 import { TextArea } from '../../../../shared/components/TextArea';
-import { ActionType, IForm, InputType } from '../../../../shared/types/form';
+import { ActionType, IForm, InputType } from '../../types/form';
 import { IFormParserProps } from './FormParser.types';
 
 import styles from './FormParser.module.css';

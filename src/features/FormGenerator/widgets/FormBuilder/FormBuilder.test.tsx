@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
+import { ActionType, InputType, IForm } from '../../types/form';
 import { FormBuilder } from './FormBuilder';
-import { ActionType, InputType, IForm } from '../../../../shared/types/form';
 
 describe('features/FormGenerator/widgets/FormBuilder', () => {
   describe('basic render', () => {

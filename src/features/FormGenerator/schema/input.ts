@@ -9,7 +9,7 @@ import {
   IRadioGroupInput,
   ITextAreaInput,
   ITextFieldInput,
-} from '../../../shared/types/form';
+} from '../types/form';
 
 const inputOptionSchema: JSONSchemaType<IInputOption> = {
   type: 'object',

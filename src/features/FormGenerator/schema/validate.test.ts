@@ -1,4 +1,4 @@
-import { ActionType, IForm, InputType } from '../../../shared/types/form';
+import { ActionType, IForm, InputType } from '../types/form';
 import { validate } from './validate';
 
 describe('features/FormGenerator/schema/validate', () => {

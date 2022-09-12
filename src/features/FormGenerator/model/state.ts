@@ -1,4 +1,4 @@
-import { ActionType, InputType, IForm } from '../../../shared/types/form';
+import { ActionType, InputType, IForm } from '../types/form';
 import { IFormGeneratorState } from './types';
 
 const today = new Date().toISOString().slice(0, 10);

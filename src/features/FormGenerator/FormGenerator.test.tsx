@@ -3,7 +3,7 @@ import {
   fireEvent, render, screen, Screen,
 } from '@testing-library/react';
 import { FormGenerator } from './FormGenerator';
-import { ActionType, InputType } from '../../shared/types/form';
+import { ActionType, InputType } from './types/form';
 
 const expectDefaultFormToBePresented = (screen: Screen) => {
   expect(screen.getByRole('heading', { name: 'Register' })).toBeInTheDocument();

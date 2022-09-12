@@ -14,7 +14,7 @@ I also added [eslint](https://npmjs.com/package/eslint) with some popular preset
 
 So, from a bird's eye view, the structure is as follows:
 
-1. [index.tsx](./src/index.tsx) is an entrypoint. It founds the root DOM element and render the App.
+1. [index.tsx](./src/index.tsx) is an entrypoint. It finds the root DOM element and render the App.
 1. [app/](./src/app) contains any app-level code.
     - [App.tsx](./src/app/App.tsx) is where the app is described. It can render several features and do the routing, but currently there is only one feature.
 1. [features/](./src/features/) contains feature-specific code, directory per feature:
@@ -22,7 +22,8 @@ So, from a bird's eye view, the structure is as follows:
         - [FormGenerator.tsx](./src/features/FormGenerator/FormGenerator.tsx) implements the full feature, the user scenario
         - [model/](./src/features/FormGenerator/model/) directory describes the data model and data flow of the feature. This is implemented with React [useReducer](https://reactjs.org/docs/hooks-reference.html#usereducer) hook in a redux way.
         - [widgets/](./src/features/FormGenerator/widgets/) directory contains feature-specific domain-oriented widgets.
-1. [shared/](./src/shared/) directory contains types, utils, and non-specific components.
+        - [types/](./src/features/FormGenerator/types/) directory describes feature-specific typings.
+1. [shared/](./src/shared/) directory contains utils and non-specific components.
 
 ## Available Scripts
 
