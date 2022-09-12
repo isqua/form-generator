@@ -3,6 +3,7 @@ import React from 'react';
 import { Form } from '../../../../shared/components/Form';
 import { FormError } from '../../../../shared/components/FormError';
 import { TextArea } from '../../../../shared/components/TextArea';
+import { useDebounce } from '../../../../shared/hooks/useDebounce';
 import { ActionType, IForm, InputType } from '../../types/form';
 import { IFormParserProps } from './FormParser.types';
 
@@ -14,15 +15,19 @@ const placeholder: IForm = {
   actions: [{ type: ActionType.submit, text: 'Submit' }],
 };
 
+const debounceTimeoutInMs = 300;
+
 export function FormParser(props: IFormParserProps): React.ReactElement {
   const {
     initialValue, error, onChange,
   } = props;
   const [value, setValue] = React.useState<string>(initialValue);
 
+  const debouncedChangeHandler = useDebounce(onChange, debounceTimeoutInMs);
+
   const handleChange = (text: string) => {
     setValue(text);
-    onChange(text);
+    debouncedChangeHandler(text);
   };
 
   return (

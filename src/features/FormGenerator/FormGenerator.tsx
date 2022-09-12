@@ -10,12 +10,12 @@ import { Layout } from '../../shared/components/Layout';
 export function FormGenerator(): React.ReactElement {
   const [state, dispatch] = React.useReducer(reducer, defaultSchema, init);
 
-  const handleChange = (text: string) => {
+  const handleChange = React.useCallback((text: string) => {
     dispatch({
       type: FormGeneratorAction.update,
       payload: { text },
     });
-  };
+  }, [dispatch]);
 
   return (
     <Layout
