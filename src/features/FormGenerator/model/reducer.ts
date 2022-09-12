@@ -66,5 +66,12 @@ export function reducer(
     return init(defaultSchema);
   }
 
+  if (action.type === FormGeneratorAction.prettify && !state.error) {
+    return {
+      ...state,
+      text: JSON.stringify(state.schema, null, 2),
+    };
+  }
+
   return state;
 }

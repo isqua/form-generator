@@ -123,4 +123,24 @@ describe('features/FormGenerator', () => {
     expect(screen.getByTestId('FormParserError')).toBeEmptyDOMElement();
     expect(screen.getByTestId('FormBuilder')).toBeEmptyDOMElement();
   });
+
+  it('should prettify JSON when a user hit the Prettify button', () => {
+    const userForm = {
+      items: [{ type: InputType.textfield, label: 'City' }],
+      actions: [{ type: ActionType.submit, text: 'Relocate' }],
+    };
+    const prettyValue = JSON.stringify(userForm, null, 2);
+
+    render(<FormGenerator />);
+    fireEvent.change(
+      screen.getByLabelText(formJsonInputLabel),
+      { target: { value: JSON.stringify(userForm) } },
+    );
+    fireEvent.click(screen.getByRole('button', { name: 'Prettify' }));
+
+    expect(screen.getByTestId('FormParserError')).toBeEmptyDOMElement();
+    expect(screen.getByRole('textbox', { name: 'City' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Relocate' })).toBeInTheDocument();
+    expect(screen.getByLabelText(formJsonInputLabel)).toHaveValue(prettyValue);
+  });
 });

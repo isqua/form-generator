@@ -25,6 +25,10 @@ export function FormGenerator(): React.ReactElement {
     dispatch({ type: FormGeneratorAction.clear });
   };
 
+  const handlePrettify = () => {
+    dispatch({ type: FormGeneratorAction.prettify });
+  };
+
   return (
     <Layout
       main={(
@@ -34,6 +38,7 @@ export function FormGenerator(): React.ReactElement {
           onChange={handleChange}
           onClear={handleClear}
           onReset={handleReset}
+          onPrettify={handlePrettify}
         />
       )}
       secondary={(
