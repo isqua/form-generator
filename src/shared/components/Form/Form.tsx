@@ -26,8 +26,11 @@ export function Form(props: IFormProps): React.ReactElement {
 
       {actions && actions.length > 0 && (
         <div className={styles.actions}>
-          {actions.map((action) => (
+          {actions.map((action, index) => (
             <Button
+              // we have no control over the uniqueness of any button property
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
               type={action.type}
               disabled={action.disabled}
               onClick={action.onClick}

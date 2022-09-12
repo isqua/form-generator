@@ -18,7 +18,14 @@ export const FormBuilder = React.memo((props: IFormBuilderProps): React.ReactEle
       className={className}
     >
       {items.length > 0 && (
-        items.map((item) => <FormField schema={item} />)
+        items.map((item, index) => (
+          <FormField
+            // we have no control over the uniqueness of any input property
+            // eslint-disable-next-line react/no-array-index-key
+            key={index}
+            schema={item}
+          />
+        ))
       )}
     </Form>
   );
