@@ -1,8 +1,9 @@
 import React from 'react';
+import { clx } from '../../utils/clx';
+import { hasChildren } from '../../utils/hasChildren';
 import { Button } from '../Button';
 import { IFormProps } from './Form.types';
 import styles from './Form.module.css';
-import { clx } from '../../utils/clx';
 
 export function Form(props: IFormProps): React.ReactElement {
   const {
@@ -18,7 +19,7 @@ export function Form(props: IFormProps): React.ReactElement {
     <form className={clx(className, styles.form)} onSubmit={onSubmit}>
       {title && <h4 className={styles.title}>{title}</h4>}
 
-      {React.Children.count(children) > 0 && (
+      {hasChildren(children) && (
         <div className={clx(fieldsClassName, styles.fields)}>
           {children}
         </div>
