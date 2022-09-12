@@ -1,4 +1,5 @@
 import { validate } from '../schema/validate';
+import { defaultSchema, init } from './state';
 import { FormGeneratorAction, IFormGeneratorState, IFormGeneratorAction } from './types';
 
 const safeParseJson = (text: string) => {
@@ -51,6 +52,10 @@ export function reducer(
       text,
       error: result.errors.join('. '),
     };
+  }
+
+  if (action.type === FormGeneratorAction.reset) {
+    return init(defaultSchema);
   }
 
   return state;

@@ -3,6 +3,7 @@ import React from 'react';
 import { Form } from '../../../../shared/components/Form';
 import { FormError } from '../../../../shared/components/FormError';
 import { TextArea } from '../../../../shared/components/TextArea';
+import { IButtonProps } from '../../../../shared/components/Button';
 import { useDebounce } from '../../../../shared/hooks/useDebounce';
 import { ActionType, IForm, InputType } from '../../types/form';
 import { IFormParserProps } from './FormParser.types';
@@ -19,7 +20,7 @@ const debounceTimeoutInMs = 300;
 
 export function FormParser(props: IFormParserProps): React.ReactElement {
   const {
-    initialValue, error, onChange,
+    initialValue, error, onChange, onReset,
   } = props;
   const [value, setValue] = React.useState<string>(initialValue);
 
@@ -30,10 +31,24 @@ export function FormParser(props: IFormParserProps): React.ReactElement {
     debouncedChangeHandler(text);
   };
 
+  // Reset the value if the state in the store has changed
+  React.useEffect(
+    () => setValue(initialValue),
+    [initialValue],
+  );
+
+  const actions: IButtonProps[] = [
+    {
+      type: 'reset',
+      children: 'Example',
+      onClick: onReset,
+    },
+  ];
+
   return (
     <Form
       title="Form Generator"
-      actions={[]}
+      actions={actions}
       className={styles.container}
       fieldsClassName={styles.fields}
     >

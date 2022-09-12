@@ -4,6 +4,7 @@ import {
 } from '@testing-library/react';
 import { FormGenerator } from './FormGenerator';
 import { ActionType, InputType } from './types/form';
+import { defaultSchema } from './model';
 
 const expectDefaultFormToBePresented = (screen: Screen) => {
   expect(screen.getByRole('heading', { name: 'Register' })).toBeInTheDocument();
@@ -92,6 +93,24 @@ describe('features/FormGenerator', () => {
       { target: { value } },
     );
 
+    expectDefaultFormToBePresented(screen);
+    expect(screen.getByTestId('FormParserError')).toBeEmptyDOMElement();
+  });
+
+  it('should reset all state to the default example when a user hit the Reset button', () => {
+    const userValue = '"';
+
+    render(<FormGenerator />);
+    fireEvent.change(
+      screen.getByLabelText(formJsonInputLabel),
+      { target: { value: userValue } },
+    );
+    expect(screen.getByText('Unexpected end of JSON input')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Example' }));
+    const actual = JSON.parse(screen.getByLabelText<HTMLTextAreaElement>(formJsonInputLabel).value);
+
+    expect(actual).toEqual(defaultSchema);
     expectDefaultFormToBePresented(screen);
     expect(screen.getByTestId('FormParserError')).toBeEmptyDOMElement();
   });

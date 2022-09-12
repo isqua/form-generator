@@ -17,6 +17,10 @@ export function FormGenerator(): React.ReactElement {
     });
   }, [dispatch]);
 
+  const handleReset = () => {
+    dispatch({ type: FormGeneratorAction.reset });
+  };
+
   return (
     <Layout
       main={(
@@ -24,6 +28,7 @@ export function FormGenerator(): React.ReactElement {
           initialValue={state.text}
           error={state.error}
           onChange={handleChange}
+          onReset={handleReset}
         />
       )}
       secondary={(
