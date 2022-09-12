@@ -31,4 +31,5 @@ jobs:
         with:
           path: ./build
       - name: deploy to github pages
+        id: deployment
         uses: actions/deploy-pages@v1
