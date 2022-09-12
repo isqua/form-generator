@@ -20,7 +20,7 @@ const debounceTimeoutInMs = 300;
 
 export function FormParser(props: IFormParserProps): React.ReactElement {
   const {
-    initialValue, error, onChange, onClear, onReset, onPrettify,
+    initialValue, error, onChange, onClear, onReset, onPrettify, onRollback,
   } = props;
   const [value, setValue] = React.useState<string>(initialValue);
 
@@ -52,6 +52,11 @@ export function FormParser(props: IFormParserProps): React.ReactElement {
       type: 'button',
       children: 'Prettify',
       onClick: onPrettify,
+    },
+    {
+      type: 'button',
+      children: 'Rollback',
+      onClick: onRollback,
     },
   ];
 

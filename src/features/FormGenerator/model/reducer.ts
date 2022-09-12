@@ -1,5 +1,5 @@
 import { validate } from '../schema/validate';
-import { defaultSchema, init } from './state';
+import { defaultIndent, defaultSchema, init } from './state';
 import { FormGeneratorAction, IFormGeneratorState, IFormGeneratorAction } from './types';
 
 const safeParseJson = (text: string) => {
@@ -21,7 +21,7 @@ export function reducer(
 
     if (text.trim().length === 0) {
       return {
-        schema: state.schema,
+        ...state,
         text,
         error: '',
       };
@@ -31,7 +31,7 @@ export function reducer(
 
     if (error) {
       return {
-        schema: state.schema,
+        ...state,
         text,
         error,
       };
@@ -43,12 +43,13 @@ export function reducer(
       return {
         schema,
         text,
+        lastValidText: text,
         error: '',
       };
     }
 
     return {
-      schema: state.schema,
+      ...state,
       text,
       error: result.errors.join('. '),
     };
@@ -57,6 +58,7 @@ export function reducer(
   if (action.type === FormGeneratorAction.clear) {
     return {
       schema: { items: [], actions: [] },
+      lastValidText: state.lastValidText,
       text: '',
       error: '',
     };
@@ -66,10 +68,26 @@ export function reducer(
     return init(defaultSchema);
   }
 
+  if (action.type === FormGeneratorAction.rollback) {
+    const { schema, error } = safeParseJson(state.lastValidText);
+
+    if (!error) {
+      return {
+        schema,
+        text: state.lastValidText,
+        lastValidText: state.lastValidText,
+        error: '',
+      };
+    }
+  }
+
   if (action.type === FormGeneratorAction.prettify && !state.error) {
+    const text = JSON.stringify(state.schema, null, defaultIndent);
+
     return {
       ...state,
-      text: JSON.stringify(state.schema, null, 2),
+      text,
+      lastValidText: text,
     };
   }
 

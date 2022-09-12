@@ -5,4 +5,5 @@ export interface IFormParserProps {
   onReset(): void;
   onClear(): void;
   onPrettify(): void;
+  onRollback(): void;
 }

@@ -29,6 +29,10 @@ export function FormGenerator(): React.ReactElement {
     dispatch({ type: FormGeneratorAction.prettify });
   };
 
+  const handleRollback = () => {
+    dispatch({ type: FormGeneratorAction.rollback });
+  };
+
   return (
     <Layout
       main={(
@@ -39,6 +43,7 @@ export function FormGenerator(): React.ReactElement {
           onClear={handleClear}
           onReset={handleReset}
           onPrettify={handlePrettify}
+          onRollback={handleRollback}
         />
       )}
       secondary={(

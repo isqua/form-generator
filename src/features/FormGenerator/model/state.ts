@@ -2,6 +2,7 @@ import { ActionType, InputType, IForm } from '../types/form';
 import { IFormGeneratorState } from './types';
 
 const today = new Date().toISOString().slice(0, 10);
+export const defaultIndent = 2;
 
 export const defaultSchema: IForm = {
   title: 'Register',
@@ -44,9 +45,12 @@ export const defaultSchema: IForm = {
 };
 
 export function init(schema: IForm): IFormGeneratorState {
+  const text = JSON.stringify(schema, null, defaultIndent);
+
   return {
     schema,
-    text: JSON.stringify(schema, null, 2),
+    text,
+    lastValidText: text,
     error: '',
   };
 }

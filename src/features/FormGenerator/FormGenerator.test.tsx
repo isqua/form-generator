@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  fireEvent, render, screen, Screen,
+  fireEvent, render, screen, Screen, waitFor,
 } from '@testing-library/react';
 import { FormGenerator } from './FormGenerator';
 import { ActionType, InputType } from './types/form';
@@ -142,5 +142,38 @@ describe('features/FormGenerator', () => {
     expect(screen.getByRole('textbox', { name: 'City' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Relocate' })).toBeInTheDocument();
     expect(screen.getByLabelText(formJsonInputLabel)).toHaveValue(prettyValue);
+  });
+
+  it('should rollback to the last valid state wheh a user hit the Rollback button', async () => {
+    const userForm = {
+      items: [{ type: InputType.textfield, label: 'City' }],
+      actions: [{ type: ActionType.submit, text: 'Relocate' }],
+    };
+    const validValue = JSON.stringify(userForm);
+    const invalidValue = '"';
+
+    render(<FormGenerator />);
+    fireEvent.change(
+      screen.getByLabelText(formJsonInputLabel),
+      { target: { value: validValue } },
+    );
+
+    expect(screen.getByRole('textbox', { name: 'City' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Relocate' })).toBeInTheDocument();
+
+    fireEvent.change(
+      screen.getByLabelText(formJsonInputLabel),
+      { target: { value: invalidValue } },
+    );
+
+    jest.runAllTimers();
+
+    await waitFor(
+      () => expect(screen.getByText('Unexpected end of JSON input')).toBeInTheDocument(),
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: 'Rollback' }));
+
+    expect(screen.getByLabelText(formJsonInputLabel)).toHaveValue(validValue);
   });
 });

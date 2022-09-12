@@ -5,6 +5,7 @@ export enum FormGeneratorAction {
   reset = 'reset',
   clear = 'clear',
   prettify = 'prettify',
+  rollback = 'rollback',
 }
 
 interface IFormGeneratorActionUpdate {
@@ -24,14 +25,20 @@ interface IFormGeneratorActionPrettify {
   type: FormGeneratorAction.prettify;
 }
 
+interface IFormGeneratorActionRollback {
+  type: FormGeneratorAction.rollback;
+}
+
 export type IFormGeneratorAction =
   IFormGeneratorActionClear |
   IFormGeneratorActionPrettify |
   IFormGeneratorActionUpdate |
-  IFormGeneratorActionReset;
+  IFormGeneratorActionReset |
+  IFormGeneratorActionRollback;
 
 export interface IFormGeneratorState {
   text: string;
   schema: IForm;
   error: string;
+  lastValidText: string;
 }
