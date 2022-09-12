@@ -3,6 +3,7 @@ import { IForm } from '../types/form';
 export enum FormGeneratorAction {
   update = 'update',
   reset = 'reset',
+  clear = 'clear',
 }
 
 interface IFormGeneratorActionUpdate {
@@ -14,7 +15,12 @@ interface IFormGeneratorActionReset {
   type: FormGeneratorAction.reset;
 }
 
+interface IFormGeneratorActionClear {
+  type: FormGeneratorAction.clear;
+}
+
 export type IFormGeneratorAction =
+  IFormGeneratorActionClear |
   IFormGeneratorActionUpdate |
   IFormGeneratorActionReset;
 

@@ -54,6 +54,14 @@ export function reducer(
     };
   }
 
+  if (action.type === FormGeneratorAction.clear) {
+    return {
+      schema: { items: [], actions: [] },
+      text: '',
+      error: '',
+    };
+  }
+
   if (action.type === FormGeneratorAction.reset) {
     return init(defaultSchema);
   }

@@ -12,11 +12,12 @@ export function Form(props: IFormProps): React.ReactElement {
     children,
     className,
     fieldsClassName,
+    testId,
     onSubmit,
   } = props;
 
   return (
-    <form className={clx(className, styles.form)} onSubmit={onSubmit}>
+    <form className={clx(className, styles.form)} onSubmit={onSubmit} data-testid={testId}>
       {title && <h4 className={styles.title}>{title}</h4>}
 
       {hasChildren(children) && (

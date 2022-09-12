@@ -13,6 +13,7 @@ export const FormBuilder = React.memo((props: IFormBuilderProps): React.ReactEle
 
   return (
     <Form
+      testId="FormBuilder"
       title={title}
       actions={buttons}
       className={className}

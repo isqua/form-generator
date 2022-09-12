@@ -114,4 +114,13 @@ describe('features/FormGenerator', () => {
     expectDefaultFormToBePresented(screen);
     expect(screen.getByTestId('FormParserError')).toBeEmptyDOMElement();
   });
+
+  it('should clear all state when a user hit the Clear button', () => {
+    render(<FormGenerator />);
+    fireEvent.click(screen.getByRole('button', { name: 'Clear' }));
+
+    expect(screen.getByLabelText(formJsonInputLabel)).toHaveValue('');
+    expect(screen.getByTestId('FormParserError')).toBeEmptyDOMElement();
+    expect(screen.getByTestId('FormBuilder')).toBeEmptyDOMElement();
+  });
 });

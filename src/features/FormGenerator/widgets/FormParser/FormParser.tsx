@@ -20,7 +20,7 @@ const debounceTimeoutInMs = 300;
 
 export function FormParser(props: IFormParserProps): React.ReactElement {
   const {
-    initialValue, error, onChange, onReset,
+    initialValue, error, onChange, onClear, onReset,
   } = props;
   const [value, setValue] = React.useState<string>(initialValue);
 
@@ -38,6 +38,11 @@ export function FormParser(props: IFormParserProps): React.ReactElement {
   );
 
   const actions: IButtonProps[] = [
+    {
+      type: 'reset',
+      children: 'Clear',
+      onClick: onClear,
+    },
     {
       type: 'reset',
       children: 'Example',

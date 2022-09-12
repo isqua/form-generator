@@ -3,4 +3,5 @@ export interface IFormParserProps {
   error?: string;
   onChange(schema: string): void;
   onReset(): void;
+  onClear(): void;
 }
