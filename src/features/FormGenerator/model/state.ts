@@ -44,7 +44,7 @@ export const defaultSchema: IForm = {
   ],
 };
 
-export function init(schema: IForm): IFormGeneratorState {
+export const stateFromSchema = (schema: IForm): IFormGeneratorState => {
   const text = JSON.stringify(schema, null, defaultIndent);
 
   return {
@@ -53,4 +53,6 @@ export function init(schema: IForm): IFormGeneratorState {
     lastValidText: text,
     error: '',
   };
-}
+};
+
+export const init = stateFromSchema;

@@ -1,5 +1,7 @@
 import { validate } from '../schema/validate';
-import { defaultIndent, defaultSchema, init } from './state';
+import {
+  defaultSchema, stateFromSchema,
+} from './state';
 import { FormGeneratorAction, IFormGeneratorState, IFormGeneratorAction } from './types';
 
 const safeParseJson = (text: string) => {
@@ -65,7 +67,7 @@ export function reducer(
   }
 
   if (action.type === FormGeneratorAction.reset) {
-    return init(defaultSchema);
+    return stateFromSchema(defaultSchema);
   }
 
   if (action.type === FormGeneratorAction.rollback) {
@@ -82,13 +84,7 @@ export function reducer(
   }
 
   if (action.type === FormGeneratorAction.prettify && !state.error) {
-    const text = JSON.stringify(state.schema, null, defaultIndent);
-
-    return {
-      ...state,
-      text,
-      lastValidText: text,
-    };
+    return stateFromSchema(state.schema);
   }
 
   return state;
