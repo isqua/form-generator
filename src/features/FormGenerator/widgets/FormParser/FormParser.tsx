@@ -6,6 +6,7 @@ import { TextArea } from '../../../../shared/components/TextArea';
 import { IButtonProps } from '../../../../shared/components/Button';
 import { useDebounce } from '../../../../shared/hooks/useDebounce';
 import { ActionType, IForm, InputType } from '../../types/form';
+import { FormGeneratorAction, IFormGeneratorAction } from '../../model';
 import { IFormParserProps } from './FormParser.types';
 
 import styles from './FormParser.module.css';
@@ -18,13 +19,50 @@ const placeholder: IForm = {
 
 const debounceTimeoutInMs = 300;
 
-export function FormParser(props: IFormParserProps): React.ReactElement {
-  const {
-    initialValue, error, onChange, onClear, onReset, onPrettify, onRollback,
-  } = props;
-  const [value, setValue] = React.useState<string>(initialValue);
+const getActions = (dispatch: React.Dispatch<IFormGeneratorAction>): IButtonProps[] => {
+  const actions: IButtonProps[] = [
+    {
+      type: 'reset',
+      children: 'Clear',
+      onClick: () => dispatch({ type: FormGeneratorAction.clear }),
+    },
+    {
+      type: 'reset',
+      children: 'Example',
+      title: 'Insert an example config',
+      onClick: () => dispatch({ type: FormGeneratorAction.reset }),
+    },
+    {
+      type: 'button',
+      children: 'Prettify',
+      title: 'Prettify your config',
+      onClick: () => dispatch({ type: FormGeneratorAction.prettify }),
+    },
+    {
+      type: 'button',
+      children: 'Rollback',
+      title: 'Rollback to last valid config',
+      onClick: () => dispatch({ type: FormGeneratorAction.rollback }),
+    },
+  ];
 
-  const debouncedChangeHandler = useDebounce(onChange, debounceTimeoutInMs);
+  return actions.map((action) => ({ ...action, theme: 'flat', className: styles.action }) as IButtonProps);
+};
+
+export function FormParser(props: IFormParserProps): React.ReactElement {
+  // In the real world I would use redux hooks, but our app is too small for it, so let’s use props
+  const { state, dispatch } = props;
+  const [value, setValue] = React.useState<string>(state.text);
+  const actions = getActions(dispatch);
+
+  const dispatchChange = React.useCallback((text: string) => {
+    dispatch({
+      type: FormGeneratorAction.update,
+      payload: { text },
+    });
+  }, [dispatch]);
+
+  const debouncedChangeHandler = useDebounce(dispatchChange, debounceTimeoutInMs);
 
   const handleChange = (text: string) => {
     setValue(text);
@@ -33,35 +71,9 @@ export function FormParser(props: IFormParserProps): React.ReactElement {
 
   // Reset the value if the state in the store has changed
   React.useEffect(
-    () => setValue(initialValue),
-    [initialValue],
+    () => setValue(state.text),
+    [state.text],
   );
-
-  const actions: IButtonProps[] = [
-    {
-      type: 'reset',
-      children: 'Clear',
-      onClick: onClear,
-    },
-    {
-      type: 'reset',
-      children: 'Example',
-      title: 'Insert an example config',
-      onClick: onReset,
-    },
-    {
-      type: 'button',
-      children: 'Prettify',
-      title: 'Prettify your config',
-      onClick: onPrettify,
-    },
-    {
-      type: 'button',
-      children: 'Rollback',
-      title: 'Rollback to last valid config',
-      onClick: onRollback,
-    },
-  ].map((action) => ({ ...action, theme: 'flat', className: styles.action }) as IButtonProps);
 
   return (
     <Form
@@ -78,7 +90,7 @@ export function FormParser(props: IFormParserProps): React.ReactElement {
         rows={15}
         onChange={handleChange}
       />
-      <FormError testId="FormParserError" className={styles.error}>{error}</FormError>
+      <FormError testId="FormParserError" className={styles.error}>{state.error}</FormError>
     </Form>
   );
 }
