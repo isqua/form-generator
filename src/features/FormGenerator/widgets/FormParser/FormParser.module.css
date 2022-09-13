@@ -10,3 +10,20 @@
 .error {
   min-height: var(--text-line-height);
 }
+
+.action {
+  flex-grow: 1;
+  flex-basis: 35%;
+}
+
+@media screen and (min-width: 500px) and (max-width: 799px) {
+  .action {
+    flex-basis: 20%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .action {
+    flex-basis: 20%;
+  }
+}
