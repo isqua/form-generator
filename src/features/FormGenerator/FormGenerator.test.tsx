@@ -31,6 +31,10 @@ const expectDefaultFormToBePresented = (screen: Screen) => {
 const formJsonInputLabel = 'Describe your form in JSON';
 
 describe('features/FormGenerator', () => {
+  beforeAll(() => jest.useFakeTimers());
+
+  afterAll(() => jest.useRealTimers());
+
   it('should render example form by default', () => {
     render(<FormGenerator />);
 
