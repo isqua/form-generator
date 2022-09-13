@@ -14,6 +14,19 @@ const safeParseJson = (text: string) => {
   }
 };
 
+const safeValidateText = (text: string) => {
+  const { schema, error } = safeParseJson(text);
+
+  if (error) {
+    return { schema, error };
+  }
+
+  const result = validate(schema);
+  const validateError = result.errors ? result.errors.join('. ') : '';
+
+  return { schema, error: validateError };
+};
+
 export function reducer(
   state: IFormGeneratorState,
   action: IFormGeneratorAction,
@@ -29,7 +42,7 @@ export function reducer(
       };
     }
 
-    const { schema, error } = safeParseJson(text);
+    const { schema, error } = safeValidateText(text);
 
     if (error) {
       return {
@@ -39,21 +52,11 @@ export function reducer(
       };
     }
 
-    const result = validate(schema);
-
-    if (result.data) {
-      return {
-        schema,
-        text,
-        lastValidText: text,
-        error: '',
-      };
-    }
-
     return {
-      ...state,
+      schema,
       text,
-      error: result.errors.join('. '),
+      lastValidText: text,
+      error: '',
     };
   }
 
@@ -71,7 +74,7 @@ export function reducer(
   }
 
   if (action.type === FormGeneratorAction.rollback) {
-    const { schema, error } = safeParseJson(state.lastValidText);
+    const { schema, error } = safeValidateText(state.lastValidText);
 
     if (!error) {
       return {
