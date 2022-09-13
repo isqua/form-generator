@@ -46,16 +46,19 @@ export function FormParser(props: IFormParserProps): React.ReactElement {
     {
       type: 'reset',
       children: 'Example',
+      title: 'Insert an example config',
       onClick: onReset,
     },
     {
       type: 'button',
       children: 'Prettify',
+      title: 'Prettify your config',
       onClick: onPrettify,
     },
     {
       type: 'button',
       children: 'Rollback',
+      title: 'Rollback to last valid config',
       onClick: onRollback,
     },
   ].map((action) => ({ ...action, theme: 'flat', className: styles.action }) as IButtonProps);

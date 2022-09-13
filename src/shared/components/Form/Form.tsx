@@ -35,6 +35,7 @@ export function Form(props: IFormProps): React.ReactElement {
               key={index}
               type={action.type}
               theme={action.theme}
+              title={action.title}
               className={action.className}
               disabled={action.disabled}
               onClick={action.onClick}

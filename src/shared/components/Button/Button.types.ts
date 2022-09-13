@@ -5,5 +5,6 @@ export interface IButtonProps extends PropsWithChildren {
   theme?: 'flat';
   className?: string;
   disabled?: boolean;
+  title?: string;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 }

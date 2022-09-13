@@ -10,13 +10,14 @@ const themes = {
 
 export function Button(props: IButtonProps): React.ReactElement {
   const {
-    type, disabled, children, onClick, className, theme,
+    type, disabled, children, onClick, className, theme, title,
   } = props;
 
   return (
     <button
       // eslint-disable-next-line react/button-has-type
       type={type}
+      title={title}
       disabled={disabled}
       className={clx(styles.control, className, theme && themes[theme])}
       onClick={onClick}
