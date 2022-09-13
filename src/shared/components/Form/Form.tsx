@@ -7,6 +7,8 @@ import styles from './Form.module.css';
 
 export function Form(props: IFormProps): React.ReactElement {
   const {
+    action = '#',
+    method,
     title,
     actions,
     children,
@@ -17,7 +19,14 @@ export function Form(props: IFormProps): React.ReactElement {
   } = props;
 
   return (
-    <form className={clx(className, styles.form)} onSubmit={onSubmit} data-testid={testId}>
+    <form
+      action={action}
+      method={method}
+      onSubmit={onSubmit}
+      className={clx(className, styles.form)}
+      data-testid={testId}
+      target="_blank"
+    >
       {title && <h4 className={styles.title}>{title}</h4>}
 
       {hasChildren(children) && (

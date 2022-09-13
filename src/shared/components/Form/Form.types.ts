@@ -7,6 +7,8 @@ export interface IFormProps extends PropsWithChildren {
   fieldsClassName?: string;
   fieldClassName?: string;
   actions?: IButtonProps[];
+  action?: string;
+  method?: string;
   onSubmit?: () => void;
   testId?: string;
 }
