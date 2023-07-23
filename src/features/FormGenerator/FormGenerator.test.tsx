@@ -43,7 +43,7 @@ describe('features/FormGenerator', () => {
 
   it('should render error but not rerender form when text is not a valid JSON', () => {
     const value = '{"title":"hello';
-    const expectedError = 'Unexpected end of JSON input';
+    const expectedError = 'Unterminated string in JSON at position 15';
 
     render(<FormGenerator />);
     fireEvent.change(
@@ -109,7 +109,7 @@ describe('features/FormGenerator', () => {
       screen.getByLabelText(formJsonInputLabel),
       { target: { value: userValue } },
     );
-    expect(screen.getByText('Unexpected end of JSON input')).toBeInTheDocument();
+    expect(screen.getByText('Unterminated string in JSON at position 1')).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole('button', { name: 'Example' }));
     const actual = JSON.parse(screen.getByLabelText<HTMLTextAreaElement>(formJsonInputLabel).value);
@@ -173,7 +173,7 @@ describe('features/FormGenerator', () => {
     jest.runAllTimers();
 
     await waitFor(
-      () => expect(screen.getByText('Unexpected end of JSON input')).toBeInTheDocument(),
+      () => expect(screen.getByText('Unterminated string in JSON at position 1')).toBeInTheDocument(),
     );
 
     fireEvent.click(screen.getByRole('button', { name: 'Rollback' }));
